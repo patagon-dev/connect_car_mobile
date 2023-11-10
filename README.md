@@ -1,6 +1,6 @@
-# ConnectCar-v1
+# ConnectCar Mobile Project
 
-A new Flutter project.
+Build using FlutterFlow. 
 
 ## Getting Started
 
