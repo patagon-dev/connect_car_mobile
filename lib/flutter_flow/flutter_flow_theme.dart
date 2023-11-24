@@ -152,13 +152,13 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
 
-  late Color ghostWhite = const Color(0xFFF3F4F9);
-  late Color frenchGray = const Color(0xFFCED1DE);
-  late Color seasalt = const Color(0xFFFBFAFB);
-  late Color celeste = const Color(0xFFBEF0DF);
-  late Color platinum = const Color(0xFFDFDDE3);
-  late Color textColor = const Color(0xFF5F6377);
-  late Color textFieldColor = const Color(0xFFFCFCFD);
+  late Color ghostWhite = Color(0xFFF3F4F9);
+  late Color frenchGray = Color(0xFFCED1DE);
+  late Color seasalt = Color(0xFFFBFAFB);
+  late Color celeste = Color(0xFFBEF0DF);
+  late Color platinum = Color(0xFFDFDDE3);
+  late Color textColor = Color(0xFF5F6377);
+  late Color textFieldColor = Color(0xFFFCFCFD);
 }
 
 abstract class Typography {

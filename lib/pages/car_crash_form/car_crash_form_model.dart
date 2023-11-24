@@ -1,9 +1,20 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import '/pages/bottom_nav_bar/bottom_nav_bar_widget.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'car_crash_form_widget.dart' show CarCrashFormWidget;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   ///  State fields for stateful widgets in this page.
@@ -675,9 +686,6 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     if (val.length < 2) {
       return 'Requires at least 2 characters.';
     }
-    if (val.length > 2) {
-      return 'Maximum 2 characters allowed, currently ${val.length}.';
-    }
 
     return null;
   }
@@ -693,7 +701,6 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
 
   /// Initialization and disposal methods.
 
-  @override
   void initState(BuildContext context) {
     nombredelapersonaqueibaconduciendoControllerValidator =
         _nombredelapersonaqueibaconduciendoControllerValidator;
@@ -749,7 +756,6 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     bottomNavBarModel = createModel(context, () => BottomNavBarModel());
   }
 
-  @override
   void dispose() {
     unfocusNode.dispose();
     nombredelapersonaqueibaconduciendoFocusNode?.dispose();

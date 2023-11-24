@@ -1,4 +1,6 @@
 // Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -58,13 +60,13 @@ class _EmailTextFieldState extends State<EmailTextField> {
                   if (v!.isEmpty) {
                     showErrorEmail = true;
                     setState(() {});
-                    return 'Email is required.';
+                    return 'El Email es requerido';
                   } else if (!RegExp(
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                       .hasMatch(v)) {
                     showErrorEmail = true;
                     setState(() {});
-                    return "Enter valid email";
+                    return "Email inválido";
                   }
                   showErrorEmail = false;
                   setState(() {});
@@ -83,7 +85,7 @@ class _EmailTextFieldState extends State<EmailTextField> {
                   errorStyle: TextStyle(
                     fontSize: 12,
                     color: Colors.red,
-                    fontFamily: font400,
+                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                   ),
                   contentPadding: const EdgeInsets.only(
                       left: 10, top: 10, bottom: 10, right: 10),
@@ -135,7 +137,7 @@ class _EmailTextFieldState extends State<EmailTextField> {
           fontSize: 14,
           color: Color(0xFF5F6377),
           fontWeight: FontWeight.w400,
-          fontFamily: font400,
+          fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
         ),
       ),
     );
@@ -143,12 +145,11 @@ class _EmailTextFieldState extends State<EmailTextField> {
 
   TextStyle formTextStyle() => TextStyle(
         fontSize: 16,
-        fontFamily: font400,
+        fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
         fontWeight: FontWeight.w400,
         color: Color(0xFF1A203D),
       );
-  String font = 'Plus Jakarta Sans';
-  String font400 = 'Plus Jakarta Sans Regular';
+
   bool showErrorEmail = false;
 
   final _forgotPasswordFormKey = GlobalKey<FormState>();

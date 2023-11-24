@@ -8,6 +8,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/pages/bottom_nav_bar/bottom_nav_bar_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,7 +18,7 @@ import 'car_crash_form_model.dart';
 export 'car_crash_form_model.dart';
 
 class CarCrashFormWidget extends StatefulWidget {
-  const CarCrashFormWidget({super.key});
+  const CarCrashFormWidget({Key? key}) : super(key: key);
 
   @override
   _CarCrashFormWidgetState createState() => _CarCrashFormWidgetState();
@@ -186,22 +187,22 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                   child: Container(
                     height: MediaQuery.sizeOf(context).height * 0.82,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Builder(
                       builder: (context) {
                         if (FFAppState().currentTabIndex == 0) {
                           return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
                             child: Material(
                               color: Colors.transparent,
@@ -222,7 +223,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 25.0, 20.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -243,12 +244,12 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                               false,
                                             ))
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.00, 0.00),
                                                 child: FlutterFlowIconButton(
                                                   borderRadius: 20.0,
                                                   buttonSize: 40.0,
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.arrow_back_ios_new,
                                                     color: Color(0xFF131353),
                                                     size: 25.0,
@@ -282,7 +283,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                               false,
                                             ))
                                               Container(
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                               ),
                                             Text(
                                               'Declaración jurada',
@@ -306,15 +307,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   ),
                                             ),
                                             Container(
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      const Padding(
+                                      Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 10.0, 0.0),
-                                        child: SizedBox(
+                                        child: Container(
                                           width: double.infinity,
                                           height: 95.0,
                                           child: custom_widgets.CustomStepper(
@@ -331,7 +332,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 20.0, 10.0, 25.0),
                                                 child: Column(
@@ -340,7 +341,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -371,7 +372,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -386,7 +387,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -423,7 +424,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              final datePicked1Date =
+                                                              final _datePicked1Date =
                                                                   await showDatePicker(
                                                                 context:
                                                                     context,
@@ -442,17 +443,17 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             2050)),
                                                               );
 
-                                                              if (datePicked1Date !=
+                                                              if (_datePicked1Date !=
                                                                   null) {
                                                                 safeSetState(
                                                                     () {
                                                                   _model.datePicked1 =
                                                                       DateTime(
-                                                                    datePicked1Date
+                                                                    _datePicked1Date
                                                                         .year,
-                                                                    datePicked1Date
+                                                                    _datePicked1Date
                                                                         .month,
-                                                                    datePicked1Date
+                                                                    _datePicked1Date
                                                                         .day,
                                                                   );
                                                                 });
@@ -473,17 +474,17 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             10.0),
                                                                 border:
                                                                     Border.all(
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0x7457636C),
                                                                 ),
                                                               ),
                                                               child: Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.00,
                                                                         0.00),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -497,7 +498,9 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                           ? 'select current date'
                                                                           : dateTimeFormat(
                                                                               'yyy-MM-DD',
-                                                                              _model.datePicked1),
+                                                                              _model.datePicked1,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
                                                                       'select your birthdate',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
@@ -507,7 +510,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                           fontFamily:
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color: _model.datePicked1 == null
-                                                                              ? const Color(0xFF57636C)
+                                                                              ? Color(0xFF57636C)
                                                                               : FlutterFlowTheme.of(context).textColor,
                                                                           useGoogleFonts:
                                                                               GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
@@ -522,7 +525,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -537,7 +540,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -581,7 +584,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -661,13 +664,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .nombredelapersonaqueibaconduciendoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -682,7 +690,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -726,7 +734,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -806,13 +814,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .rutoPasaportedelapersonaqueibaconduciendoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -827,7 +840,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -874,7 +887,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -954,13 +967,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .nacionalidadControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -975,7 +993,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1019,7 +1037,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -1099,13 +1117,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .direccinCalleynmerodelapersonaqueibaconduciendoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -1120,7 +1143,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1164,7 +1187,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -1244,13 +1267,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .comunadelapersonaqueibaconduciendoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -1265,7 +1293,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1309,7 +1337,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -1389,13 +1417,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .ciudaddelapersonaqueibaconduciendoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -1410,7 +1443,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1454,7 +1487,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -1534,13 +1567,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .marcavehculoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -1555,7 +1593,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1599,7 +1637,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -1679,13 +1717,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .modelossControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -1700,7 +1743,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1744,7 +1787,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -1829,13 +1872,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .anoController1Validator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -1850,7 +1898,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1894,7 +1942,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -1974,13 +2022,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .patenteControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -1995,7 +2048,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -2032,7 +2085,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              final datePicked2Date =
+                                                              final _datePicked2Date =
                                                                   await showDatePicker(
                                                                 context:
                                                                     context,
@@ -2051,17 +2104,17 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             2050)),
                                                               );
 
-                                                              if (datePicked2Date !=
+                                                              if (_datePicked2Date !=
                                                                   null) {
                                                                 safeSetState(
                                                                     () {
                                                                   _model.datePicked2 =
                                                                       DateTime(
-                                                                    datePicked2Date
+                                                                    _datePicked2Date
                                                                         .year,
-                                                                    datePicked2Date
+                                                                    _datePicked2Date
                                                                         .month,
-                                                                    datePicked2Date
+                                                                    _datePicked2Date
                                                                         .day,
                                                                   );
                                                                 });
@@ -2082,17 +2135,17 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             10.0),
                                                                 border:
                                                                     Border.all(
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0x7457636C),
                                                                 ),
                                                               ),
                                                               child: Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.00,
                                                                         0.00),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -2106,7 +2159,9 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                           ? 'select your accident date'
                                                                           : dateTimeFormat(
                                                                               'yyy-MM-DD',
-                                                                              _model.datePicked2),
+                                                                              _model.datePicked2,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
                                                                       'select your birthdate',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
@@ -2116,7 +2171,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                           fontFamily:
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color: _model.datePicked2 == null
-                                                                              ? const Color(0xFF57636C)
+                                                                              ? Color(0xFF57636C)
                                                                               : FlutterFlowTheme.of(context).textColor,
                                                                           useGoogleFonts:
                                                                               GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
@@ -2131,7 +2186,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -2146,7 +2201,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -2183,7 +2238,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              final datePicked3Time =
+                                                              final _datePicked3Time =
                                                                   await showTimePicker(
                                                                 context:
                                                                     context,
@@ -2191,7 +2246,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                     .fromDateTime(
                                                                         getCurrentTimestamp),
                                                               );
-                                                              if (datePicked3Time !=
+                                                              if (_datePicked3Time !=
                                                                   null) {
                                                                 safeSetState(
                                                                     () {
@@ -2203,9 +2258,9 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                         .month,
                                                                     getCurrentTimestamp
                                                                         .day,
-                                                                    datePicked3Time
+                                                                    _datePicked3Time
                                                                         .hour,
-                                                                    datePicked3Time
+                                                                    _datePicked3Time
                                                                         .minute,
                                                                   );
                                                                 });
@@ -2226,17 +2281,17 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             10.0),
                                                                 border:
                                                                     Border.all(
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0x7457636C),
                                                                 ),
                                                               ),
                                                               child: Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.00,
                                                                         0.00),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -2250,7 +2305,9 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                           ? 'select accident time'
                                                                           : dateTimeFormat(
                                                                               'jm',
-                                                                              _model.datePicked3),
+                                                                              _model.datePicked3,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
                                                                       'select accident time',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
@@ -2260,7 +2317,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                           fontFamily:
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color: _model.datePicked3 == null
-                                                                              ? const Color(0xFF57636C)
+                                                                              ? Color(0xFF57636C)
                                                                               : FlutterFlowTheme.of(context).textColor,
                                                                           useGoogleFonts:
                                                                               GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
@@ -2275,7 +2332,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -2290,7 +2347,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -2334,7 +2391,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -2414,13 +2471,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .calleendondeocurrielincidenteControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -2435,7 +2497,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -2479,7 +2541,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -2559,13 +2621,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .comunaendondeocurrielincidenteControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -2580,7 +2647,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -2624,7 +2691,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -2704,13 +2771,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .ciudadendondeocurrielincidenteControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -2725,7 +2797,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -2769,7 +2841,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -2854,6 +2926,11 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .velocidadalmomentodelsiniestroenkmControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
@@ -2870,7 +2947,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 20.0, 10.0, 25.0),
                                                 child: Column(
@@ -2879,7 +2956,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -2894,7 +2971,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -2938,7 +3015,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -3024,7 +3101,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -3039,7 +3116,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -3083,7 +3160,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -3169,7 +3246,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -3184,7 +3261,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -3228,7 +3305,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -3315,7 +3392,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -3330,7 +3407,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -3377,7 +3454,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -3474,7 +3551,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 20.0, 10.0, 25.0),
                                                 child: Column(
@@ -3483,7 +3560,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -3498,7 +3575,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -3534,7 +3611,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 FormFieldController<
                                                                         String>(
                                                                     null),
-                                                            options: const [
+                                                            options: [
                                                               'Si',
                                                               'Ab',
                                                               'Cd'
@@ -3576,12 +3653,12 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                     .of(context)
                                                                 .textFieldColor,
                                                             elevation: 2.0,
-                                                            borderColor: const Color(
+                                                            borderColor: Color(
                                                                 0x7457636C),
                                                             borderWidth: 1.0,
                                                             borderRadius: 8.0,
                                                             margin:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         4.0,
@@ -3599,10 +3676,10 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     Container(
                                                       width: double.infinity,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     20.0,
@@ -3617,7 +3694,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -3631,7 +3708,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Plus Jakarta Sans',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF5F6377),
                                                                       letterSpacing:
                                                                           0.5,
@@ -3651,7 +3728,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -3666,7 +3743,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -3713,7 +3790,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -3766,7 +3843,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -3792,13 +3869,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .nombreControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -3813,7 +3895,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -3860,7 +3942,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -3940,13 +4022,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .rutController1Validator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -3961,7 +4048,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -4008,7 +4095,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -4099,13 +4186,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .telfonoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -4120,7 +4212,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -4167,7 +4259,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -4247,13 +4339,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .domicilioControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -4268,7 +4365,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -4315,7 +4412,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -4404,7 +4501,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -4419,7 +4516,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -4466,7 +4563,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -4546,13 +4643,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .compaiadesegurosControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -4567,7 +4669,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -4614,7 +4716,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -4694,13 +4796,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .placapatenteControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -4715,7 +4822,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -4762,7 +4869,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -4842,13 +4949,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .marcaControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -4863,7 +4975,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -4910,7 +5022,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -4990,13 +5102,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .modeloControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -5011,7 +5128,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -5058,7 +5175,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -5143,10 +5260,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .anoController2Validator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[0-9]'))
+                                                            ],
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         20.0,
@@ -5161,7 +5283,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -5193,10 +5315,9 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                       FormFieldController<
                                                                               String>(
                                                                           null),
-                                                                  options: const [
+                                                                  options: [
                                                                     'Si',
-                                                                    'Ab',
-                                                                    'Cd'
+                                                                    'No'
                                                                   ],
                                                                   onChanged: (val) =>
                                                                       setState(() =>
@@ -5232,13 +5353,13 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                   elevation:
                                                                       2.0,
                                                                   borderColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0x7457636C),
                                                                   borderWidth:
                                                                       1.0,
                                                                   borderRadius:
                                                                       8.0,
-                                                                  margin: const EdgeInsetsDirectional
+                                                                  margin: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           4.0,
@@ -5256,7 +5377,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         20.0,
@@ -5271,7 +5392,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -5303,7 +5424,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                       FormFieldController<
                                                                               String>(
                                                                           null),
-                                                                  options: const [
+                                                                  options: [
                                                                     'No',
                                                                     'Yes'
                                                                   ],
@@ -5341,13 +5462,13 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                   elevation:
                                                                       2.0,
                                                                   borderColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0x7457636C),
                                                                   borderWidth:
                                                                       1.0,
                                                                   borderRadius:
                                                                       8.0,
-                                                                  margin: const EdgeInsetsDirectional
+                                                                  margin: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           4.0,
@@ -5378,7 +5499,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 20.0, 10.0, 25.0),
                                                 child: Column(
@@ -5387,7 +5508,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -5402,7 +5523,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -5438,7 +5559,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 FormFieldController<
                                                                         String>(
                                                                     null),
-                                                            options: const [
+                                                            options: [
                                                               'Si',
                                                               'Ab',
                                                               'Cd'
@@ -5480,12 +5601,12 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                     .of(context)
                                                                 .textFieldColor,
                                                             elevation: 2.0,
-                                                            borderColor: const Color(
+                                                            borderColor: Color(
                                                                 0x7457636C),
                                                             borderWidth: 1.0,
                                                             borderRadius: 8.0,
                                                             margin:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         4.0,
@@ -5502,7 +5623,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -5517,7 +5638,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -5564,7 +5685,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -5617,7 +5738,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -5643,13 +5764,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .fechaControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -5664,7 +5790,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -5711,7 +5837,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -5764,7 +5890,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -5790,13 +5916,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .horaControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -5811,7 +5942,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -5858,7 +5989,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -5911,7 +6042,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -5937,13 +6068,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .nmerodeparteControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -5958,7 +6094,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -6005,7 +6141,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -6058,7 +6194,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -6084,13 +6220,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .nmerodefolioControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -6105,7 +6246,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -6152,7 +6293,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -6205,7 +6346,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -6231,13 +6372,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .nmerodeconstanciaControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -6252,7 +6398,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -6299,7 +6445,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -6352,7 +6498,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -6378,13 +6524,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .citacinControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -6399,7 +6550,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -6446,7 +6597,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -6499,7 +6650,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -6525,13 +6676,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .fechadecitacinControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -6546,7 +6702,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -6593,7 +6749,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -6646,7 +6802,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -6672,6 +6828,11 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .juzgadoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
@@ -6688,7 +6849,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 20.0, 10.0, 25.0),
                                                 child: Column(
@@ -6697,7 +6858,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -6712,7 +6873,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -6759,7 +6920,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -6812,7 +6973,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -6838,13 +6999,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .nombrecompletoControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -6859,7 +7025,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -6906,7 +7072,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -6959,7 +7125,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -6985,13 +7151,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .rutController2Validator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -7006,7 +7177,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -7037,7 +7208,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -7051,7 +7222,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Plus Jakarta Sans',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF131353),
                                                                     fontSize:
                                                                         10.0,
@@ -7085,7 +7256,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0x7457636C),
                                                                   width: 1.0,
@@ -7138,7 +7309,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             8.0),
                                                               ),
                                                               filled: true,
-                                                              fillColor: const Color(
+                                                              fillColor: Color(
                                                                   0xFFFCFCFD),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -7165,13 +7336,18 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .firmaControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '[a-zA-Z0-9]'))
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   20.0,
@@ -7261,7 +7437,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                             10.0),
                                                                 border:
                                                                     Border.all(
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0x7457636C),
                                                                 ),
                                                               ),
@@ -7270,7 +7446,9 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                     (context) {
                                                                   if (valueOrDefault<
                                                                       bool>(
-                                                                    (_model.uploadedLocalFile.bytes?.isEmpty ??
+                                                                    _model.uploadedLocalFile ==
+                                                                            null ||
+                                                                        (_model.uploadedLocalFile.bytes?.isEmpty ??
                                                                             true),
                                                                     true,
                                                                   )) {
@@ -7279,14 +7457,14 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        SizedBox(
+                                                                        Container(
                                                                           height:
                                                                               95.0,
                                                                           child:
                                                                               Stack(
                                                                             children: [
                                                                               Align(
-                                                                                alignment: const AlignmentDirectional(0.05, 0.00),
+                                                                                alignment: AlignmentDirectional(0.05, 0.00),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -7301,12 +7479,12 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                                       ),
                                                                                     ),
                                                                                     Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                       child: Text(
                                                                                         'subir archivo',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Plus Jakarta Sans',
-                                                                                              color: const Color(0xFF979797),
+                                                                                              color: Color(0xFF979797),
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.5,
                                                                                               fontWeight: FontWeight.normal,
@@ -7359,7 +7537,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   width: 120.0,
                                                   height: 120.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: SvgPicture.asset(
@@ -7368,7 +7546,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 25.0,
                                                           20.0, 0.0),
                                                   child: Row(
@@ -7380,7 +7558,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -7394,7 +7572,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Plus Jakarta Sans',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF131353),
                                                                 fontSize: 28.0,
                                                                 fontWeight:
@@ -7420,11 +7598,11 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     Expanded(
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.00, 0.00),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -7440,7 +7618,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Plus Jakarta Sans',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF131353),
                                                                   fontSize:
                                                                       16.0,
@@ -7467,11 +7645,11 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.00, 0.00),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -7487,7 +7665,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Plus Jakarta Sans',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF131353),
                                                                 fontSize: 14.0,
                                                                 fontWeight:
@@ -7504,13 +7682,59 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     ),
                                                   ],
                                                 ),
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    context.pushNamed(
+                                                        'schedule_maintenance');
+                                                  },
+                                                  text:
+                                                      'schedule  maintenance car ',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          color: Colors.white,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
                                               ],
                                             );
                                           }
                                         },
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             15.0, 0.0, 15.0, 35.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -7529,8 +7753,12 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     'guess:nmella@cenabast.cl',
                                                 tags: 'som tag',
                                                 fechaDeHoy: dateTimeFormat(
-                                                    'YYYY-MM-DD',
-                                                    _model.datePicked1),
+                                                  'yyy-MM-DD',
+                                                  _model.datePicked1,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 nombreDeLaPersonaQueIbaConduciendo:
                                                     _model
                                                         .nombredelapersonaqueibaconduciendoController
@@ -7564,11 +7792,21 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                 patenteVehiculo: _model
                                                     .patenteController.text,
                                                 fechaEnQueOcurrioElIncidente:
-                                                    dateTimeFormat('YYYY-MM-DD',
-                                                        _model.datePicked2),
+                                                    dateTimeFormat(
+                                                  'yyy-MM-DD',
+                                                  _model.datePicked2,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 horaEnQueOcurrioElIncidente:
-                                                    dateTimeFormat('jm',
-                                                        _model.datePicked3),
+                                                    dateTimeFormat(
+                                                  'jm',
+                                                  _model.datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 calleEnDondeOcurrioElIncidente:
                                                     _model
                                                         .calleendondeocurrielincidenteController
@@ -7631,9 +7869,14 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                 declaracionRut:
                                                     _model.rutController2.text,
                                               );
-                                              if ((_model.formResponse
-                                                      ?.succeeded ??
-                                                  true)) {
+                                              if (CarCrashGroup
+                                                      .raiseTicketOfCarCrashCall
+                                                      .id(
+                                                    (_model.formResponse
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ) !=
+                                                  null) {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   SnackBar(
@@ -7648,7 +7891,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .primaryText,
                                                       ),
                                                     ),
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 4000),
                                                     backgroundColor:
                                                         FlutterFlowTheme.of(
@@ -7661,7 +7904,14 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'form submission Failed.',
+                                                      CarCrashGroup
+                                                          .raiseTicketOfCarCrashCall
+                                                          .error(
+                                                            (_model.formResponse
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )
+                                                          .toString(),
                                                       style: TextStyle(
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
@@ -7671,7 +7921,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                 .primaryText,
                                                       ),
                                                     ),
-                                                    duration: const Duration(
+                                                    duration: Duration(
                                                         milliseconds: 4000),
                                                     backgroundColor:
                                                         FlutterFlowTheme.of(
@@ -7700,15 +7950,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'Please select current date'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7723,15 +7973,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'Please select Accident date'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7746,15 +7996,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'Please select Time the incident occurred'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7794,15 +8044,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'please select Third parties involved'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7818,15 +8068,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'Please select Third party guilty'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7841,15 +8091,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'Please select Injured'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7877,15 +8127,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'Please select Carabineros attend the scene of the accident'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7905,7 +8155,9 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                         .validate()) {
                                                   return;
                                                 }
-                                                if ((_model.uploadedLocalFile
+                                                if (_model.uploadedLocalFile ==
+                                                        null ||
+                                                    (_model.uploadedLocalFile
                                                                 .bytes ??
                                                             [])
                                                         .isEmpty) {
@@ -7914,15 +8166,15 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text('Alert'),
-                                                        content: const Text(
+                                                        title: Text('Alert'),
+                                                        content: Text(
                                                             'Please upload image'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       );
@@ -7948,12 +8200,12 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                             width: double.infinity,
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF131353),
+                                            color: Color(0xFF131353),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
@@ -7971,7 +8223,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                                                                   .titleSmallFamily),
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -7988,7 +8240,7 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                           );
                         } else {
                           return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 40.0),
                             child: Material(
                               color: Colors.transparent,
@@ -8024,13 +8276,13 @@ class _CarCrashFormWidgetState extends State<CarCrashFormWidget> {
                     ),
                   ),
                 ),
-                wrapWithModel(
-                  model: _model.bottomNavBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: const BottomNavBarWidget(),
-                ),
-              ],
-            ),
+              ),
+              wrapWithModel(
+                model: _model.bottomNavBarModel,
+                updateCallback: () => setState(() {}),
+                child: BottomNavBarWidget(),
+              ),
+            ],
           ),
         ),
       ),

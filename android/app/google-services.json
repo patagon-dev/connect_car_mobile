@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "61195030950",
+    "project_id": "connect-car-85531",
+    "storage_bucket": "connect-car-85531.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61195030950:android:f64d20fe4fad064a067f67",
+        "android_client_info": {
+          "package_name": "com.car.connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaMfAlinl4VvTei3DtlH9qhKxKXnPo0gI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

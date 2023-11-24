@@ -1,4 +1,4 @@
-# ConnectCar-v1
+# Connect
 
 A new Flutter project.
 

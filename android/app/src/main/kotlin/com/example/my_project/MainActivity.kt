@@ -1,4 +1,4 @@
-package com.mycompany.connectcarv1
+package com.car.connect
 
 import io.flutter.embedding.android.FlutterActivity
 

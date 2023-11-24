@@ -11,9 +11,9 @@ export 'reset_password_verification_model.dart';
 
 class ResetPasswordVerificationWidget extends StatefulWidget {
   const ResetPasswordVerificationWidget({
-    super.key,
+    Key? key,
     required this.email,
-  });
+  }) : super(key: key);
 
   final String? email;
 
@@ -68,16 +68,16 @@ class _ResetPasswordVerificationWidgetState
             scrollDirection: Axis.vertical,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.00, 0.00),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 25.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -96,7 +96,7 @@ class _ResetPasswordVerificationWidgetState
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 40.0, 0.0, 95.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
@@ -110,14 +110,14 @@ class _ResetPasswordVerificationWidgetState
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                         child: Text(
                           '¿No recuerdas tu contraseña?',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
                                 fontFamily: 'Plus Jakarta Sans',
-                                color: const Color(0xFF131353),
+                                color: Color(0xFF131353),
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.w800,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
@@ -127,7 +127,7 @@ class _ResetPasswordVerificationWidgetState
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             30.0, 0.0, 30.0, 0.0),
                         child: Text(
                           'Hemos enviado un email a ',
@@ -136,7 +136,7 @@ class _ResetPasswordVerificationWidgetState
                               .bodyMedium
                               .override(
                                 fontFamily: 'Plus Jakarta Sans',
-                                color: const Color(0xFF131353),
+                                color: Color(0xFF131353),
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -144,7 +144,7 @@ class _ResetPasswordVerificationWidgetState
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             30.0, 0.0, 30.0, 0.0),
                         child: Text(
                           functions.sortEmail(widget.email!),
@@ -153,7 +153,7 @@ class _ResetPasswordVerificationWidgetState
                               .bodyMedium
                               .override(
                                 fontFamily: 'Plus Jakarta Sans',
-                                color: const Color(0xFF131353),
+                                color: Color(0xFF131353),
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -161,7 +161,7 @@ class _ResetPasswordVerificationWidgetState
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             30.0, 0.0, 30.0, 200.0),
                         child: Text(
                           'con un link para que recuperes el acceso a tu cuenta.',
@@ -170,7 +170,7 @@ class _ResetPasswordVerificationWidgetState
                               .bodyMedium
                               .override(
                                 fontFamily: 'Plus Jakarta Sans',
-                                color: const Color(0xFF131353),
+                                color: Color(0xFF131353),
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -185,11 +185,11 @@ class _ResetPasswordVerificationWidgetState
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 45.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: const Color(0xFF131353),
+                          color: Color(0xFF131353),
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
@@ -201,7 +201,7 @@ class _ResetPasswordVerificationWidgetState
                                         .titleSmallFamily),
                               ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

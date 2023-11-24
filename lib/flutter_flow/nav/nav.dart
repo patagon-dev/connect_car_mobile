@@ -1,10 +1,21 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -29,32 +40,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const LoginWidget(),
+      errorBuilder: (context, state) => LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const LoginWidget(),
+          builder: (context, _) => LoginWidget(),
         ),
         FFRoute(
           name: 'car_crash_form',
           path: '/carCrashForm',
-          builder: (context, params) => const CarCrashFormWidget(),
+          builder: (context, params) => CarCrashFormWidget(),
         ),
         FFRoute(
           name: 'profile_page',
-          path: '/profilePage',
-          builder: (context, params) => const ProfilePageWidget(),
+          path: '/profile_page',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'profile_page')
+              : ProfilePageWidget(),
         ),
         FFRoute(
           name: 'login',
           path: '/login',
-          builder: (context, params) => const LoginWidget(),
+          builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
           name: 'reset_password',
           path: '/resetPassword',
-          builder: (context, params) => const ResetPasswordWidget(),
+          builder: (context, params) => ResetPasswordWidget(),
         ),
         FFRoute(
           name: 'reset_password_verification',
@@ -66,7 +79,33 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'suscripciones',
           path: '/suscripciones',
-          builder: (context, params) => const SuscripcionesWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'suscripciones')
+              : NavBarPage(
+                  initialPage: 'suscripciones',
+                  page: SuscripcionesWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'suscripciones_details',
+          path: '/suscripcionesDetails',
+          builder: (context, params) => SuscripcionesDetailsWidget(
+            brand: params.getParam('brand', ParamType.String),
+            model: params.getParam('model', ParamType.String),
+            version: params.getParam('version', ParamType.String),
+            image: params.getParam('image', ParamType.String),
+            licensePlate: params.getParam('licensePlate', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'schedule_maintenance',
+          path: '/scheduleMaintenance',
+          builder: (context, params) => ScheduleMaintenanceWidget(),
+        ),
+        FFRoute(
+          name: 'maintenance_scheduling',
+          path: '/maintenanceScheduling',
+          builder: (context, params) => MaintenanceSchedulingWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -138,6 +177,7 @@ class FFParameters {
     String paramName,
     ParamType type, [
     bool isList = false,
+    List<String>? collectionNamePath,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -151,11 +191,8 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(
-      param,
-      type,
-      isList,
-    );
+    return deserializeParam<T>(param, type, isList,
+        collectionNamePath: collectionNamePath);
   }
 }
 
@@ -222,7 +259,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

@@ -1,4 +1,6 @@
 // Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -6,6 +8,8 @@ import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'index.dart'; // Imports other custom widgets
 
 import 'package:flutter_svg/svg.dart';
 
@@ -37,14 +41,15 @@ class _CustomStepperState extends State<CustomStepper> {
         EasyStepper(
           activeStep: FFAppState().stepperIndex,
           //for line decoration
-          lineStyle: LineStyle(
-            lineLength: 50,
-            lineSpace: 0,
-            lineThickness: 3,
-            lineType: LineType.normal,
-            defaultLineColor: Colors.grey,
-            finishedLineColor: FlutterFlowTheme.of(context).primary,
-          ),
+          //for lower version
+          // lineStyle: LineStyle(
+          lineLength: 50,
+          lineSpace: 0,
+          // lineThickness: 3,
+          lineType: LineType.normal,
+          defaultLineColor: Colors.grey,
+          finishedLineColor: FlutterFlowTheme.of(context).primary,
+          // ),
           //for tapping or not
           enableStepTapping: false,
           //for steps decoration

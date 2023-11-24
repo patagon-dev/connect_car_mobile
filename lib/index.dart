@@ -9,3 +9,9 @@ export '/pages/reset_password_verification/reset_password_verification_widget.da
     show ResetPasswordVerificationWidget;
 export '/pages/suscripciones/suscripciones_widget.dart'
     show SuscripcionesWidget;
+export '/pages/suscripciones_details/suscripciones_details_widget.dart'
+    show SuscripcionesDetailsWidget;
+export '/schedule_maintenance/schedule_maintenance_widget.dart'
+    show ScheduleMaintenanceWidget;
+export '/pages/maintenance_scheduling/maintenance_scheduling_widget.dart'
+    show MaintenanceSchedulingWidget;

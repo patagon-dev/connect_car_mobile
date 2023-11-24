@@ -1,4 +1,6 @@
 // Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -46,13 +48,13 @@ class _SignInFormState extends State<SignInForm> {
                   if (v!.isEmpty) {
                     showErrorEmail = true;
                     setState(() {});
-                    return 'Email is required.';
+                    return 'El Email es requerido';
                   } else if (!RegExp(
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                       .hasMatch(v)) {
                     showErrorEmail = true;
                     setState(() {});
-                    return "Enter valid email";
+                    return "Email inválido";
                   }
                   showErrorEmail = false;
                   setState(() {});
@@ -71,11 +73,12 @@ class _SignInFormState extends State<SignInForm> {
                   errorStyle: TextStyle(
                     fontSize: 12,
                     color: Colors.red,
-                    fontFamily: font400,
+                    fontFamily:
+                        FlutterFlowTheme.of(context).bodyMedium.fontFamily,
                   ),
                   contentPadding: const EdgeInsets.all(10),
                   suffixIcon: Icon(
-                    Icons.warning_amber_rounded,
+                    Icons.warning_rounded,
                     color: showErrorEmail ? red : Colors.transparent,
                   ),
                 ),
@@ -87,11 +90,11 @@ class _SignInFormState extends State<SignInForm> {
                 if (v!.isEmpty) {
                   showErrorPassword = true;
                   setState(() {});
-                  return 'Password is required.';
+                  return "La Contraseña es requerida";
                 } else if (v.toString().length < 6) {
                   showErrorPassword = true;
                   setState(() {});
-                  return 'Password must be 6 char.';
+                  return 'Password inválido';
                 }
                 showErrorPassword = false;
                 setState(() {});
@@ -112,7 +115,7 @@ class _SignInFormState extends State<SignInForm> {
                 errorStyle: TextStyle(
                   fontSize: 12,
                   color: Colors.red,
-                  fontFamily: font400,
+                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                 ),
                 contentPadding: const EdgeInsets.all(10),
                 suffixIcon: SizedBox(
@@ -142,7 +145,7 @@ class _SignInFormState extends State<SignInForm> {
                         ),
                       ),
                       if (showErrorPassword)
-                        Icon(Icons.warning_amber, color: red),
+                        Icon(Icons.warning_rounded, color: red),
                       SizedBox(width: 8),
                     ],
                   ),
@@ -163,7 +166,7 @@ class _SignInFormState extends State<SignInForm> {
                   child: Text(
                     '¿Olvidaste tu contraseña?',
                     style: TextStyle(
-                      fontFamily: font,
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF3330E8),
@@ -197,7 +200,11 @@ class _SignInFormState extends State<SignInForm> {
                       )
                     : Text(
                         'Ingresar',
-                        style: TextStyle(fontSize: 16, fontFamily: font),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                        ),
                       ),
               ),
             ),
@@ -215,8 +222,8 @@ class _SignInFormState extends State<SignInForm> {
         style: TextStyle(
           fontSize: 14,
           color: Color(0xFF5F6377),
-          fontWeight: FontWeight.normal,
-          fontFamily: font400,
+          fontWeight: FontWeight.w400,
+          fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
         ),
       ),
     );
@@ -224,13 +231,10 @@ class _SignInFormState extends State<SignInForm> {
 
   TextStyle formTextStyle() => TextStyle(
         fontSize: 16,
-        fontFamily: font400,
+        fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
         fontWeight: FontWeight.normal,
         color: Color(0xFF1A203D),
       );
-
-  String font = 'Plus Jakarta Sans';
-  String font400 = 'Plus Jakarta Sans Regular';
 
   bool showErrorEmail = false;
   bool showErrorPassword = false;

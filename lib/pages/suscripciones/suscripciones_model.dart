@@ -1,7 +1,15 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'suscripciones_widget.dart' show SuscripcionesWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class SuscripcionesModel extends FlutterFlowModel<SuscripcionesWidget> {
   ///  Local state fields for this page.
@@ -39,23 +47,18 @@ class SuscripcionesModel extends FlutterFlowModel<SuscripcionesWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (User Suspcriptions)] action in suscripciones widget.
   ApiCallResponse? suscripcionesResponse;
-  // Stores action output result for [Backend Call - API (Subscriptions Vehicle)] action in suscripciones widget.
-  ApiCallResponse? vehicleResponsee;
   // Stores action output result for [Backend Call - API (User Vehicle Image)] action in suscripciones widget.
   ApiCallResponse? vehicleImageResponse;
+  // Stores action output result for [Backend Call - API (Subscriptions Vehicle)] action in suscripciones widget.
+  ApiCallResponse? vehicleResponse;
 
   /// Initialization and disposal methods.
 
-  @override
   void initState(BuildContext context) {}
 
-  @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 
