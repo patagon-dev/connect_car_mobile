@@ -1,4 +1,4 @@
-package com.car.connect
+package cl.soluciones.car.connect
 
 import io.flutter.embedding.android.FlutterActivity
 

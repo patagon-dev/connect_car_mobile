@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:61195030950:android:35ee9ef3974dd856067f67",
+        "android_client_info": {
+          "package_name": "cl.soluciones.car.connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaMfAlinl4VvTei3DtlH9qhKxKXnPo0gI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:61195030950:android:f64d20fe4fad064a067f67",
         "android_client_info": {
           "package_name": "com.car.connect"

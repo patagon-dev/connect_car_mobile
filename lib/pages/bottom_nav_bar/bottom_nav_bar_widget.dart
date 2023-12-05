@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +8,7 @@ import 'bottom_nav_bar_model.dart';
 export 'bottom_nav_bar_model.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
-  const BottomNavBarWidget({Key? key}) : super(key: key);
+  const BottomNavBarWidget({super.key});
 
   @override
   _BottomNavBarWidgetState createState() => _BottomNavBarWidgetState();
@@ -28,6 +27,8 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BottomNavBarModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -50,7 +51,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
         ),
-        alignment: AlignmentDirectional(0.00, 0.00),
+        alignment: const AlignmentDirectional(0.00, 0.00),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,23 +63,25 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('BOTTOM_NAV_BAR_Container_jalu648o_ON_TAP');
+                  logFirebaseEvent('Container_update_app_state');
                   _model.updatePage(() {
                     FFAppState().currentTabIndex = 0;
                   });
                 },
                 child: Container(
                   width: 150.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, -1.00),
+                          alignment: const AlignmentDirectional(0.00, -1.00),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
                             child: SvgPicture.asset(
                               'assets/images/car.svg',
@@ -89,7 +92,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 5.0, 0.0, 0.0),
                           child: Text(
                             'Mis suscripciones',
@@ -125,23 +128,25 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('BOTTOM_NAV_BAR_Container_tvva04vn_ON_TAP');
+                  logFirebaseEvent('Container_update_app_state');
                   _model.updatePage(() {
                     FFAppState().currentTabIndex = 1;
                   });
                 },
                 child: Container(
                   width: 150.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, -1.00),
+                          alignment: const AlignmentDirectional(0.00, -1.00),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
                             child: SvgPicture.asset(
                               'assets/images/profile.svg',
@@ -152,7 +157,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 5.0, 0.0, 0.0),
                           child: Text(
                             'Mi perfil',

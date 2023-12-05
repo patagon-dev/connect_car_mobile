@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
 import 'schema/suscripciones_services_record.dart';
-import 'schema/data_record.dart';
+import 'schema/communes_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,7 +12,7 @@ export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
 export 'schema/suscripciones_services_record.dart';
-export 'schema/data_record.dart';
+export 'schema/communes_record.dart';
 
 /// Functions to query SuscripcionesServicesRecords (as a Stream and as a Future).
 Future<int> querySuscripcionesServicesRecordCount({
@@ -52,38 +51,38 @@ Future<List<SuscripcionesServicesRecord>> querySuscripcionesServicesRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query DataRecords (as a Stream and as a Future).
-Future<int> queryDataRecordCount({
+/// Functions to query CommunesRecords (as a Stream and as a Future).
+Future<int> queryCommunesRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      DataRecord.collection,
+      CommunesRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<DataRecord>> queryDataRecord({
+Stream<List<CommunesRecord>> queryCommunesRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      DataRecord.collection,
-      DataRecord.fromSnapshot,
+      CommunesRecord.collection,
+      CommunesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<DataRecord>> queryDataRecordOnce({
+Future<List<CommunesRecord>> queryCommunesRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      DataRecord.collection,
-      DataRecord.fromSnapshot,
+      CommunesRecord.collection,
+      CommunesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
@@ -199,7 +198,7 @@ Future<FFFirestorePage<T>> queryCollectionPage<T>(
   } else {
     docSnapshot = await query.get();
   }
-  final getDocs = (QuerySnapshot s) => s.docs
+  getDocs(QuerySnapshot s) => s.docs
       .map(
         (d) => safeGet(
           () => recordBuilder(d),

@@ -1,3 +1,5 @@
 export 'custom_stepper.dart' show CustomStepper;
-export 'email_text_field.dart' show EmailTextField;
+export 'reset_password_form.dart' show ResetPasswordForm;
 export 'sign_in_form.dart' show SignInForm;
+export 'custom_circular_progress_indicator.dart'
+    show CustomCircularProgressIndicator;

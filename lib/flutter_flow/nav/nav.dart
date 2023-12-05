@@ -1,21 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
-import '/backend/push_notifications/push_notifications_handler.dart'
-    show PushNotificationsHandler;
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -40,48 +30,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => LoginWidget(),
+      errorBuilder: (context, state) => const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => LoginWidget(),
+          builder: (context, _) => const LoginWidget(),
         ),
         FFRoute(
           name: 'car_crash_form',
           path: '/carCrashForm',
-          builder: (context, params) => CarCrashFormWidget(),
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: CarCrashFormWidget(),
+          ),
         ),
         FFRoute(
           name: 'profile_page',
           path: '/profile_page',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'profile_page')
-              : ProfilePageWidget(),
+              ? const NavBarPage(initialPage: 'profile_page')
+              : const NavBarPage(
+                  initialPage: 'profile_page',
+                  page: ProfilePageWidget(),
+                ),
         ),
         FFRoute(
           name: 'login',
           path: '/login',
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
           name: 'reset_password',
           path: '/resetPassword',
-          builder: (context, params) => ResetPasswordWidget(),
+          builder: (context, params) => const ResetPasswordWidget(),
         ),
         FFRoute(
           name: 'reset_password_verification',
           path: '/resetPasswordVerification',
-          builder: (context, params) => ResetPasswordVerificationWidget(
-            email: params.getParam('email', ParamType.String),
-          ),
+          builder: (context, params) => const ResetPasswordVerificationWidget(),
         ),
         FFRoute(
           name: 'suscripciones',
           path: '/suscripciones',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'suscripciones')
-              : NavBarPage(
+              ? const NavBarPage(initialPage: 'suscripciones')
+              : const NavBarPage(
                   initialPage: 'suscripciones',
                   page: SuscripcionesWidget(),
                 ),
@@ -89,23 +83,140 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'suscripciones_details',
           path: '/suscripcionesDetails',
-          builder: (context, params) => SuscripcionesDetailsWidget(
-            brand: params.getParam('brand', ParamType.String),
-            model: params.getParam('model', ParamType.String),
-            version: params.getParam('version', ParamType.String),
-            image: params.getParam('image', ParamType.String),
-            licensePlate: params.getParam('licensePlate', ParamType.String),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: SuscripcionesDetailsWidget(
+              brand: params.getParam('brand', ParamType.String),
+              model: params.getParam('model', ParamType.String),
+              version: params.getParam('version', ParamType.String),
+              image: params.getParam('image', ParamType.JSON),
+              licensePlate: params.getParam('licensePlate', ParamType.String),
+              subscriptionID:
+                  params.getParam('subscriptionID', ParamType.String),
+            ),
           ),
         ),
         FFRoute(
           name: 'schedule_maintenance',
           path: '/scheduleMaintenance',
-          builder: (context, params) => ScheduleMaintenanceWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ScheduleMaintenanceWidget(
+              brand: params.getParam('brand', ParamType.String),
+              model: params.getParam('model', ParamType.String),
+              licensePlate: params.getParam('licensePlate', ParamType.String),
+              version: params.getParam('version', ParamType.String),
+              carimge: params.getParam('carimge', ParamType.JSON),
+            ),
+          ),
         ),
         FFRoute(
           name: 'maintenance_scheduling',
           path: '/maintenanceScheduling',
-          builder: (context, params) => MaintenanceSchedulingWidget(),
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: MaintenanceSchedulingWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'roadside_assistance_page',
+          path: '/roadsideAssistancePage',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: RoadsideAssistancePageWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'car_wash',
+          path: '/carWash',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: CarWashWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'tire_change',
+          path: '/tireChange',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: TireChangeWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'low_battery',
+          path: '/lowBattery',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: LowBatteryWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'fuel_replacement',
+          path: '/fuelReplacement',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: FuelReplacementWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'door_opening',
+          path: '/doorOpening',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: DoorOpeningWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'other_unforeseen_events',
+          path: '/otherUnforeseenEvents',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: OtherUnforeseenEventsWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'crane_service',
+          path: '/craneService',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: CraneServiceWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'Light_mechanics',
+          path: '/lightMechanics',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: LightMechanicsWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'LogInPage',
+          path: '/logInPage',
+          builder: (context, params) => const LogInPageWidget(),
+        ),
+        FFRoute(
+          name: 'ResetPage',
+          path: '/resetPage',
+          builder: (context, params) => const ResetPageWidget(),
+        ),
+        FFRoute(
+          name: 'ResetPasswordSuccess',
+          path: '/resetPasswordSuccess',
+          builder: (context, params) => const ResetPasswordSuccessWidget(),
+        ),
+        FFRoute(
+          name: 'car_crash_formCopy',
+          path: '/carCrashFormCopy',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: CarCrashFormCopyWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'test',
+          path: '/test',
+          builder: (context, params) => const TestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -259,7 +370,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

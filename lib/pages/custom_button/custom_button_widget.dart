@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'custom_button_model.dart';
@@ -10,11 +9,13 @@ export 'custom_button_model.dart';
 
 class CustomButtonWidget extends StatefulWidget {
   const CustomButtonWidget({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+    this.onTap,
+  });
 
   final String? title;
+  final Future<dynamic> Function()? onTap;
 
   @override
   _CustomButtonWidgetState createState() => _CustomButtonWidgetState();
@@ -33,6 +34,8 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CustomButtonModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -47,18 +50,20 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: const AlignmentDirectional(0.00, 0.00),
       child: FFButtonWidget(
-        onPressed: () {
-          print('Button pressed ...');
+        onPressed: () async {
+          logFirebaseEvent('CUSTOM_BUTTON_COMP__BTN_ON_TAP');
+          logFirebaseEvent('Button_execute_callback');
+          await widget.onTap?.call();
         },
         text: widget.title!,
         options: FFButtonOptions(
           width: double.infinity,
           height: 45.0,
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-          iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-          color: Color(0xFF131353),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+          iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+          color: const Color(0xFF131353),
           textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                 fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                 color: Colors.white,
@@ -66,7 +71,7 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
                     .containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
               ),
           elevation: 0.0,
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.transparent,
             width: 1.0,
           ),
