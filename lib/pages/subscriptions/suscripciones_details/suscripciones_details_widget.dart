@@ -1600,12 +1600,9 @@ class _SuscripcionesDetailsWidgetState extends State<SuscripcionesDetailsWidget>
                                                         .call(
                                                       subscriptionId:
                                                           widget.subscriptionID,
-                                                      authTokenBasic: functions
-                                                          .convertEmailtoBase(
-                                                              FFAppState()
-                                                                  .signInEmail,
-                                                              FFAppState()
-                                                                  .signInPassword),
+                                                      authTokenBasic:
+                                                          FFAppState()
+                                                              .userSessionToken,
                                                     ),
                                                     builder:
                                                         (context, snapshot) {

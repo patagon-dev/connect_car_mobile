@@ -767,7 +767,7 @@ class PaymentHistoryDetailsCall {
           '${ConnectCarApiGroup.baseUrl}/subscription_invoices?subscriptionId=$subscriptionId',
       callType: ApiCallType.GET,
       headers: {
-        'authorization': 'Basic $authTokenBasic',
+        'Authorization': 'Bearer $authTokenBasic',
         'Content-Type': 'text/plain',
         'Origin': 'https://dev.app.connectcar.cl',
       },
@@ -890,6 +890,7 @@ class UserSuspcriptionsCall {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'Origin': 'https://dev.app.connectcar.cl',
       },
       params: {
         'userId': userId,
@@ -1029,6 +1030,7 @@ class SubscriptionsVehicleCall {
       headers: {
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
+        'Origin': 'https://dev.app.connectcar.cl',
       },
       params: {},
       returnBody: true,
@@ -1085,7 +1087,9 @@ class UserVehicleImageCall {
       apiUrl:
           'https://fastdev.connectcar.cl/vehicle-images?brand=$brand&model=$model&version=$version&year=$year',
       callType: ApiCallType.GET,
-      headers: {},
+      headers: {
+        'Origin': 'https://dev.app.connectcar.cl',
+      },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -1132,6 +1136,7 @@ class RefreshTokenCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
+        'Origin': 'https://dev.app.connectcar.cl',
       },
       params: {},
       body: ffApiRequestBody,
