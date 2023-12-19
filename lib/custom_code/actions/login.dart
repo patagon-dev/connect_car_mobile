@@ -9,9 +9,14 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import '/backend/api_requests/api_calls.dart';
+import 'package:connect_car/index.dart';
 
-Future<String?> login(
+import '/backend/api_requests/api_calls.dart';
+import 'package:connect_car/auth/firebase_auth/auth_util.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
+
+Future<bool> login(
     BuildContext context, String? email, String? password) async {
   _toggleLoading();
   var response = await UserLoginCall.call(
@@ -24,19 +29,21 @@ Future<String?> login(
   if (!response.succeeded) {
     var res = UserLoginCall.error(response.jsonBody ?? '');
     _customWarning(context, _msg[res] ?? _unknownError);
-    return res;
+    return false;
   }
   String? token = UserLoginCall.token(response.jsonBody ?? '');
+  print('Token:-----> ${token}');
   if (token == null) {
     var res = 'No token';
     _customWarning(context, res);
-    return res;
+    return false;
   }
   String? userId = UserLoginCall.userId(response.jsonBody ?? '');
+  print('UserId:-----> ${userId}');
   if (userId == null) {
     var res = 'Sin identificación de usuario';
     _customWarning(context, res);
-    return res;
+    return false;
   }
 
   String? refreshToken = UserLoginCall.refreshToken(response.jsonBody ?? '');
@@ -57,8 +64,11 @@ Future<String?> login(
   FFAppState().loginPreferences = true;
 
   context.goNamed('suscripciones');
+  FFAppState().update(() {});
   _refreshTokenDelayed();
-  return null;
+  final user = await authManager.signInAnonymously(context);
+  await subscribeToTopic();
+  return true;
 }
 
 _toggleLoading() {
@@ -111,6 +121,17 @@ Future<String?> _refresh() async {
     ..minsToRefresh = minsToRefresh ?? 59;
   _refreshTokenDelayed();
   return null;
+}
+
+Future<void> subscribeToTopic() async {
+  try {
+    if (!kIsWeb) {
+      var id = FFAppState().userSessionUserId;
+      await FirebaseMessaging.instance.subscribeToTopic(id);
+    }
+  } catch (e) {
+    print('subscribeToTopic exception: $e');
+  }
 }
 
 const Map<String, String> _msg = {

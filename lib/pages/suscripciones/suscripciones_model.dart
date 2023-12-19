@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/subscriptions/car_description/car_description_widget.dart';
 import 'suscripciones_widget.dart' show SuscripcionesWidget;
@@ -46,14 +47,21 @@ class SuscripcionesModel extends FlutterFlowModel<SuscripcionesWidget> {
 
   dynamic profileJson;
 
+  List<DocumentReference> userId = [];
+  void addToUserId(DocumentReference item) => userId.add(item);
+  void removeFromUserId(DocumentReference item) => userId.remove(item);
+  void removeAtIndexFromUserId(int index) => userId.removeAt(index);
+  void insertAtIndexInUserId(int index, DocumentReference item) =>
+      userId.insert(index, item);
+  void updateUserIdAtIndex(int index, Function(DocumentReference) updateFn) =>
+      userId[index] = updateFn(userId[index]);
+
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - API (User Info)] action in suscripciones widget.
+  // Stores action output result for [Backend Call - API (user profile)] action in suscripciones widget.
   ApiCallResponse? profileResponse;
   // Stores action output result for [Backend Call - API (refresh token)] action in suscripciones widget.
-  ApiCallResponse? refreshTokenResponse;
-  // Stores action output result for [Backend Call - API (User Info)] action in suscripciones widget.
-  ApiCallResponse? profileResponse1;
+  ApiCallResponse? resetTokenResponse;
   // Stores action output result for [Backend Call - API (User Suspcriptions)] action in suscripciones widget.
   ApiCallResponse? suscripcionesResponse;
   // Stores action output result for [Backend Call - API (Subscriptions Vehicle)] action in suscripciones widget.
@@ -62,6 +70,8 @@ class SuscripcionesModel extends FlutterFlowModel<SuscripcionesWidget> {
   ApiCallResponse? vehicleImage;
   // Models for car_description dynamic component.
   late FlutterFlowDynamicModels<CarDescriptionModel> carDescriptionModels;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
 
   /// Initialization and disposal methods.
 
@@ -69,11 +79,13 @@ class SuscripcionesModel extends FlutterFlowModel<SuscripcionesWidget> {
   void initState(BuildContext context) {
     carDescriptionModels =
         FlutterFlowDynamicModels(() => CarDescriptionModel());
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   @override
   void dispose() {
     carDescriptionModels.dispose();
+    navBarModel.dispose();
   }
 
   /// Action blocks are added here.

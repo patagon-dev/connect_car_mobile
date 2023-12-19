@@ -3,8 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/auth/base_auth_user_provider.dart';
+
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/index.dart';
-import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -18,7 +22,46 @@ class AppStateNotifier extends ChangeNotifier {
   static AppStateNotifier? _instance;
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
+  BaseAuthUser? initialUser;
+  BaseAuthUser? user;
   bool showSplashImage = true;
+  String? _redirectLocation;
+
+  /// Determines whether the app will refresh and build again when a sign
+  /// in or sign out happens. This is useful when the app is launched or
+  /// on an unexpected logout. However, this must be turned off when we
+  /// intend to sign in/out and then navigate or perform any actions after.
+  /// Otherwise, this will trigger a refresh and interrupt the action(s).
+  bool notifyOnAuthChange = true;
+
+  bool get loading => user == null || showSplashImage;
+  bool get loggedIn => user?.loggedIn ?? false;
+  bool get initiallyLoggedIn => initialUser?.loggedIn ?? false;
+  bool get shouldRedirect => loggedIn && _redirectLocation != null;
+
+  String getRedirectLocation() => _redirectLocation!;
+  bool hasRedirect() => _redirectLocation != null;
+  void setRedirectLocationIfUnset(String loc) => _redirectLocation ??= loc;
+  void clearRedirectLocation() => _redirectLocation = null;
+
+  /// Mark as not needing to notify on a sign in / out when we intend
+  /// to perform subsequent actions (such as navigation) afterwards.
+  void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
+
+  void update(BaseAuthUser newUser) {
+    final shouldUpdate =
+        user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
+    initialUser ??= newUser;
+    user = newUser;
+    // Refresh the app on auth change unless explicitly marked otherwise.
+    // No need to update unless the user has changed.
+    if (notifyOnAuthChange && shouldUpdate) {
+      notifyListeners();
+    }
+    // Once again mark the notifier as needing to update on auth change
+    // (in order to catch sign in / out events).
+    updateNotifyOnAuthChange(true);
+  }
 
   void stopShowingSplashImage() {
     showSplashImage = false;
@@ -30,30 +73,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const LoginWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? const SuscripcionesWidget() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const LoginWidget(),
+          builder: (context, _) =>
+              appStateNotifier.loggedIn ? const SuscripcionesWidget() : const LoginWidget(),
         ),
         FFRoute(
-          name: 'car_crash_form',
-          path: '/carCrashForm',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: CarCrashFormWidget(),
-          ),
+          name: 'car_crash_form_NOT_ACTUAL',
+          path: '/carCrashFormNOTACTUAL',
+          builder: (context, params) => const CarCrashFormNOTACTUALWidget(),
         ),
         FFRoute(
           name: 'profile_page',
           path: '/profile_page',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'profile_page')
-              : const NavBarPage(
-                  initialPage: 'profile_page',
-                  page: ProfilePageWidget(),
-                ),
+          builder: (context, params) => const ProfilePageWidget(),
         ),
         FFRoute(
           name: 'login',
@@ -73,122 +110,83 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'suscripciones',
           path: '/suscripciones',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'suscripciones')
-              : const NavBarPage(
-                  initialPage: 'suscripciones',
-                  page: SuscripcionesWidget(),
-                ),
+          requireAuth: true,
+          builder: (context, params) => const SuscripcionesWidget(),
         ),
         FFRoute(
           name: 'suscripciones_details',
           path: '/suscripcionesDetails',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: SuscripcionesDetailsWidget(
-              brand: params.getParam('brand', ParamType.String),
-              model: params.getParam('model', ParamType.String),
-              version: params.getParam('version', ParamType.String),
-              image: params.getParam('image', ParamType.JSON),
-              licensePlate: params.getParam('licensePlate', ParamType.String),
-              subscriptionID:
-                  params.getParam('subscriptionID', ParamType.String),
-            ),
+          builder: (context, params) => SuscripcionesDetailsWidget(
+            brand: params.getParam('brand', ParamType.String),
+            model: params.getParam('model', ParamType.String),
+            version: params.getParam('version', ParamType.String),
+            image: params.getParam('image', ParamType.JSON),
+            licensePlate: params.getParam('licensePlate', ParamType.String),
+            subscriptionID: params.getParam('subscriptionID', ParamType.String),
           ),
         ),
         FFRoute(
           name: 'schedule_maintenance',
           path: '/scheduleMaintenance',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: ScheduleMaintenanceWidget(
-              brand: params.getParam('brand', ParamType.String),
-              model: params.getParam('model', ParamType.String),
-              licensePlate: params.getParam('licensePlate', ParamType.String),
-              version: params.getParam('version', ParamType.String),
-              carimge: params.getParam('carimge', ParamType.JSON),
-            ),
+          builder: (context, params) => ScheduleMaintenanceWidget(
+            brand: params.getParam('brand', ParamType.String),
+            model: params.getParam('model', ParamType.String),
+            licensePlate: params.getParam('licensePlate', ParamType.String),
+            version: params.getParam('version', ParamType.String),
+            carimge: params.getParam('carimge', ParamType.JSON),
           ),
         ),
         FFRoute(
           name: 'maintenance_scheduling',
           path: '/maintenanceScheduling',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: MaintenanceSchedulingWidget(),
+          builder: (context, params) => MaintenanceSchedulingWidget(
+            scheduleDate: params.getParam('scheduleDate', ParamType.String),
           ),
         ),
         FFRoute(
           name: 'roadside_assistance_page',
           path: '/roadsideAssistancePage',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: RoadsideAssistancePageWidget(),
-          ),
+          builder: (context, params) => const RoadsideAssistancePageWidget(),
         ),
         FFRoute(
           name: 'car_wash',
           path: '/carWash',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: CarWashWidget(),
-          ),
+          builder: (context, params) => const CarWashWidget(),
         ),
         FFRoute(
           name: 'tire_change',
           path: '/tireChange',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: TireChangeWidget(),
-          ),
+          builder: (context, params) => const TireChangeWidget(),
         ),
         FFRoute(
           name: 'low_battery',
           path: '/lowBattery',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: LowBatteryWidget(),
-          ),
+          builder: (context, params) => const LowBatteryWidget(),
         ),
         FFRoute(
           name: 'fuel_replacement',
           path: '/fuelReplacement',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: FuelReplacementWidget(),
-          ),
+          builder: (context, params) => const FuelReplacementWidget(),
         ),
         FFRoute(
           name: 'door_opening',
           path: '/doorOpening',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: DoorOpeningWidget(),
-          ),
+          builder: (context, params) => const DoorOpeningWidget(),
         ),
         FFRoute(
           name: 'other_unforeseen_events',
           path: '/otherUnforeseenEvents',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: OtherUnforeseenEventsWidget(),
-          ),
+          builder: (context, params) => const OtherUnforeseenEventsWidget(),
         ),
         FFRoute(
           name: 'crane_service',
           path: '/craneService',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: CraneServiceWidget(),
-          ),
+          builder: (context, params) => const CraneServiceWidget(),
         ),
         FFRoute(
           name: 'Light_mechanics',
           path: '/lightMechanics',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: LightMechanicsWidget(),
-          ),
+          builder: (context, params) => const LightMechanicsWidget(),
         ),
         FFRoute(
           name: 'LogInPage',
@@ -208,10 +206,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'car_crash_formCopy',
           path: '/carCrashFormCopy',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: CarCrashFormCopyWidget(),
-          ),
+          builder: (context, params) => const CarCrashFormCopyWidget(),
         ),
         FFRoute(
           name: 'test',
@@ -230,6 +225,40 @@ extension NavParamExtensions on Map<String, String?> {
 }
 
 extension NavigationExtensions on BuildContext {
+  void goNamedAuth(
+    String name,
+    bool mounted, {
+    Map<String, String> pathParameters = const <String, String>{},
+    Map<String, String> queryParameters = const <String, String>{},
+    Object? extra,
+    bool ignoreRedirect = false,
+  }) =>
+      !mounted || GoRouter.of(this).shouldRedirect(ignoreRedirect)
+          ? null
+          : goNamed(
+              name,
+              pathParameters: pathParameters,
+              queryParameters: queryParameters,
+              extra: extra,
+            );
+
+  void pushNamedAuth(
+    String name,
+    bool mounted, {
+    Map<String, String> pathParameters = const <String, String>{},
+    Map<String, String> queryParameters = const <String, String>{},
+    Object? extra,
+    bool ignoreRedirect = false,
+  }) =>
+      !mounted || GoRouter.of(this).shouldRedirect(ignoreRedirect)
+          ? null
+          : pushNamed(
+              name,
+              pathParameters: pathParameters,
+              queryParameters: queryParameters,
+              extra: extra,
+            );
+
   void safePop() {
     // If there is only one route on the stack, navigate to the initial
     // page instead of popping.
@@ -239,6 +268,19 @@ extension NavigationExtensions on BuildContext {
       go('/');
     }
   }
+}
+
+extension GoRouterExtensions on GoRouter {
+  AppStateNotifier get appState => AppStateNotifier.instance;
+  void prepareAuthEvent([bool ignoreRedirect = false]) =>
+      appState.hasRedirect() && !ignoreRedirect
+          ? null
+          : appState.updateNotifyOnAuthChange(false);
+  bool shouldRedirect(bool ignoreRedirect) =>
+      !ignoreRedirect && appState.hasRedirect();
+  void clearRedirectLocation() => appState.clearRedirectLocation();
+  void setRedirectLocationIfUnset(String location) =>
+      appState.updateNotifyOnAuthChange(false);
 }
 
 extension _GoRouterStateExtensions on GoRouterState {
@@ -327,6 +369,19 @@ class FFRoute {
   GoRoute toRoute(AppStateNotifier appStateNotifier) => GoRoute(
         name: name,
         path: path,
+        redirect: (context, state) {
+          if (appStateNotifier.shouldRedirect) {
+            final redirectLocation = appStateNotifier.getRedirectLocation();
+            appStateNotifier.clearRedirectLocation();
+            return redirectLocation;
+          }
+
+          if (requireAuth && !appStateNotifier.loggedIn) {
+            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            return '/login';
+          }
+          return null;
+        },
         pageBuilder: (context, state) {
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
@@ -335,7 +390,19 @@ class FFRoute {
                   builder: (context, _) => builder(context, ffParams),
                 )
               : builder(context, ffParams);
-          final child = page;
+          final child = appStateNotifier.loading
+              ? Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
+                    ),
+                  ),
+                )
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition
@@ -343,13 +410,20 @@ class FFRoute {
                   key: state.pageKey,
                   child: child,
                   transitionDuration: transitionInfo.duration,
-                  transitionsBuilder: PageTransition(
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) =>
+                          PageTransition(
                     type: transitionInfo.transitionType,
                     duration: transitionInfo.duration,
                     reverseDuration: transitionInfo.duration,
                     alignment: transitionInfo.alignment,
                     child: child,
-                  ).transitionsBuilder,
+                  ).buildTransitions(
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ),
                 )
               : MaterialPage(key: state.pageKey, child: child);
         },

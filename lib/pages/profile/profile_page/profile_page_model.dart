@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/custom_button/custom_button_widget.dart';
 import 'profile_page_widget.dart' show ProfilePageWidget;
@@ -11,19 +12,17 @@ class ProfilePageModel extends FlutterFlowModel<ProfilePageWidget> {
 
   bool profileLoader = false;
 
-  dynamic profileJson;
-
   bool emailSentLoader = true;
 
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // Stores action output result for [Backend Call - API (User Info)] action in profile_page widget.
+  // Stores action output result for [Backend Call - API (user profile)] action in profile_page widget.
   ApiCallResponse? profileResponse;
-  // Stores action output result for [Backend Call - API (refresh token)] action in profile_page widget.
-  ApiCallResponse? refreshTokenResponse;
   // Stores action output result for [Backend Call - API (user identity profiles)] action in profile_page widget.
   ApiCallResponse? userIdentityResponse;
+  // Stores action output result for [Backend Call - API (refresh token)] action in profile_page widget.
+  ApiCallResponse? resetTokenResponse;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -50,6 +49,10 @@ class ProfilePageModel extends FlutterFlowModel<ProfilePageWidget> {
   late CustomButtonModel customButtonModel2;
   // Stores action output result for [Backend Call - API (User Credentials Reset)] action in custom_button widget.
   ApiCallResponse? sendLinkResponse;
+  // Stores action output result for [Backend Call - API (refresh token)] action in custom_button widget.
+  ApiCallResponse? resetTokenRespons;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
 
   /// Initialization and disposal methods.
 
@@ -58,6 +61,7 @@ class ProfilePageModel extends FlutterFlowModel<ProfilePageWidget> {
     customButtonModel1 = createModel(context, () => CustomButtonModel());
     emailControllerValidator = _emailControllerValidator;
     customButtonModel2 = createModel(context, () => CustomButtonModel());
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   @override
@@ -68,6 +72,7 @@ class ProfilePageModel extends FlutterFlowModel<ProfilePageWidget> {
     emailController?.dispose();
 
     customButtonModel2.dispose();
+    navBarModel.dispose();
   }
 
   /// Action blocks are added here.

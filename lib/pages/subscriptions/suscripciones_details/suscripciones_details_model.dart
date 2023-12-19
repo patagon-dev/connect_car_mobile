@@ -1,3 +1,4 @@
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/subscriptions/car_description/car_description_widget.dart';
 import '/pages/subscriptions/payment_history_component/payment_history_component_widget.dart';
@@ -22,6 +23,8 @@ class SuscripcionesDetailsModel
 
   // Model for payment_history_component component.
   late PaymentHistoryComponentModel paymentHistoryComponentModel;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
 
   /// Initialization and disposal methods.
 
@@ -30,6 +33,7 @@ class SuscripcionesDetailsModel
     carDescriptionModel = createModel(context, () => CarDescriptionModel());
     paymentHistoryComponentModel =
         createModel(context, () => PaymentHistoryComponentModel());
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   @override
@@ -38,6 +42,7 @@ class SuscripcionesDetailsModel
     carDescriptionModel.dispose();
     tabBarController?.dispose();
     paymentHistoryComponentModel.dispose();
+    navBarModel.dispose();
   }
 
   /// Action blocks are added here.

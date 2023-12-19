@@ -12,11 +12,13 @@ class AddressModelStruct extends FFFirebaseStruct {
     String? departament,
     String? ciudad,
     String? comuna,
+    String? selectedRegion,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _calle = calle,
         _departament = departament,
         _ciudad = ciudad,
         _comuna = comuna,
+        _selectedRegion = selectedRegion,
         super(firestoreUtilData);
 
   // "Calle" field.
@@ -43,12 +45,19 @@ class AddressModelStruct extends FFFirebaseStruct {
   set comuna(String? val) => _comuna = val;
   bool hasComuna() => _comuna != null;
 
+  // "selectedRegion" field.
+  String? _selectedRegion;
+  String get selectedRegion => _selectedRegion ?? '';
+  set selectedRegion(String? val) => _selectedRegion = val;
+  bool hasSelectedRegion() => _selectedRegion != null;
+
   static AddressModelStruct fromMap(Map<String, dynamic> data) =>
       AddressModelStruct(
         calle: data['Calle'] as String?,
         departament: data['Departament'] as String?,
         ciudad: data['Ciudad'] as String?,
         comuna: data['Comuna'] as String?,
+        selectedRegion: data['selectedRegion'] as String?,
       );
 
   static AddressModelStruct? maybeFromMap(dynamic data) =>
@@ -59,6 +68,7 @@ class AddressModelStruct extends FFFirebaseStruct {
         'Departament': _departament,
         'Ciudad': _ciudad,
         'Comuna': _comuna,
+        'selectedRegion': _selectedRegion,
       }.withoutNulls;
 
   @override
@@ -77,6 +87,10 @@ class AddressModelStruct extends FFFirebaseStruct {
         ),
         'Comuna': serializeParam(
           _comuna,
+          ParamType.String,
+        ),
+        'selectedRegion': serializeParam(
+          _selectedRegion,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -103,6 +117,11 @@ class AddressModelStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        selectedRegion: deserializeParam(
+          data['selectedRegion'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -114,12 +133,13 @@ class AddressModelStruct extends FFFirebaseStruct {
         calle == other.calle &&
         departament == other.departament &&
         ciudad == other.ciudad &&
-        comuna == other.comuna;
+        comuna == other.comuna &&
+        selectedRegion == other.selectedRegion;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([calle, departament, ciudad, comuna]);
+  int get hashCode => const ListEquality()
+      .hash([calle, departament, ciudad, comuna, selectedRegion]);
 }
 
 AddressModelStruct createAddressModelStruct({
@@ -127,6 +147,7 @@ AddressModelStruct createAddressModelStruct({
   String? departament,
   String? ciudad,
   String? comuna,
+  String? selectedRegion,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -137,6 +158,7 @@ AddressModelStruct createAddressModelStruct({
       departament: departament,
       ciudad: ciudad,
       comuna: comuna,
+      selectedRegion: selectedRegion,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

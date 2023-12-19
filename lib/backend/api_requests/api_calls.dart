@@ -14,6 +14,9 @@ class CarCrashGroup {
   static Map<String, String> headers = {};
   static RaiseTicketOfCarCrashCall raiseTicketOfCarCrashCall =
       RaiseTicketOfCarCrashCall();
+  static ScheduleRequestInZamadCall scheduleRequestInZamadCall =
+      ScheduleRequestInZamadCall();
+  static CreateZamadUserCall createZamadUserCall = CreateZamadUserCall();
 }
 
 class RaiseTicketOfCarCrashCall {
@@ -69,6 +72,7 @@ class RaiseTicketOfCarCrashCall {
     String? declaracionNombreCompleto = '',
     String? declaracionRut = '',
     String? authorizationToken = 'YWRtaW4tY2NAbWFya2V0c2hvcC5pbzpQbGVqODc0NA==',
+    String? userEmail = '',
   }) async {
     final article = _serializeJson(articleJson);
     final ffApiRequestBody = '''
@@ -129,7 +133,7 @@ class RaiseTicketOfCarCrashCall {
       apiUrl: '${CarCrashGroup.baseUrl}tickets/',
       callType: ApiCallType.POST,
       headers: {
-        'X-On-Behalf-Of': 'nmella@cenabast.cl',
+        'X-On-Behalf-Of': '$userEmail',
         'Content-Type': 'application/json',
         'Authorization': 'Basic $authorizationToken',
       },
@@ -140,6 +144,7 @@ class RaiseTicketOfCarCrashCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -333,15 +338,272 @@ class RaiseTicketOfCarCrashCall {
         response,
         r'''$.declaracion_rut''',
       );
-  dynamic articleIds(dynamic response) => getJsonField(
+  List<int>? articleIds(dynamic response) => (getJsonField(
         response,
         r'''$.article_ids''',
         true,
-      );
-  dynamic ticketTimeAccountingIds(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .cast<int>();
+  List? ticketTimeAccountingIds(dynamic response) => getJsonField(
         response,
         r'''$.ticket_time_accounting_ids''',
         true,
+      ) as List?;
+}
+
+class ScheduleRequestInZamadCall {
+  Future<ApiCallResponse> call({
+    String? title = '',
+    String? group = 'Users',
+    dynamic articleJson,
+    String? customerId = '',
+    String? email = '',
+    String? authTokenBearer =
+        'Bearer MfaSE3CHlbT58A3czVPM7E8mn3UhNlcxfTQ6OMcvixnLAdhnWO2rXooPOq0n7UqJ',
+  }) async {
+    final article = _serializeJson(articleJson);
+    final ffApiRequestBody = '''
+{
+  "title": "$title",
+  "group": "$group",
+  "article": $article,
+  "customer_id":"$customerId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'schedule request in  Zamad',
+      apiUrl: '${CarCrashGroup.baseUrl}tickets/',
+      callType: ApiCallType.POST,
+      headers: {
+        'X-On-Behalf-Of': '$email',
+        'Authorization': '$authTokenBearer',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic ticketID(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  dynamic groupID(dynamic response) => getJsonField(
+        response,
+        r'''$.group_id''',
+      );
+  dynamic priorityID(dynamic response) => getJsonField(
+        response,
+        r'''$.priority_id''',
+      );
+  dynamic stateID(dynamic response) => getJsonField(
+        response,
+        r'''$.state_id''',
+      );
+  dynamic number(dynamic response) => getJsonField(
+        response,
+        r'''$.number''',
+      );
+  dynamic title(dynamic response) => getJsonField(
+        response,
+        r'''$.title''',
+      );
+  dynamic ownerID(dynamic response) => getJsonField(
+        response,
+        r'''$.owner_id''',
+      );
+  dynamic customerID(dynamic response) => getJsonField(
+        response,
+        r'''$.customer_id''',
+      );
+  dynamic lastContactAt(dynamic response) => getJsonField(
+        response,
+        r'''$.last_contact_at''',
+      );
+  dynamic lastContactCustomerAt(dynamic response) => getJsonField(
+        response,
+        r'''$.last_contact_customer_at''',
+      );
+  dynamic createArticleTypeId(dynamic response) => getJsonField(
+        response,
+        r'''$.create_article_type_id''',
+      );
+  dynamic createArticleSenderId(dynamic response) => getJsonField(
+        response,
+        r'''$.create_article_sender_id''',
+      );
+  dynamic articleCount(dynamic response) => getJsonField(
+        response,
+        r'''$.article_count''',
+      );
+  dynamic preferences(dynamic response) => getJsonField(
+        response,
+        r'''$.preferences''',
+      );
+  dynamic updatedById(dynamic response) => getJsonField(
+        response,
+        r'''$.updated_by_id''',
+      );
+  dynamic createdById(dynamic response) => getJsonField(
+        response,
+        r'''$.created_by_id''',
+      );
+  dynamic createdAt(dynamic response) => getJsonField(
+        response,
+        r'''$.created_at''',
+      );
+  dynamic updatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.updated_at''',
+      );
+  List<int>? articleIds(dynamic response) => (getJsonField(
+        response,
+        r'''$.article_ids''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .cast<int>();
+  List? ticketTimeAccountingIds(dynamic response) => getJsonField(
+        response,
+        r'''$.ticket_time_accounting_ids''',
+        true,
+      ) as List?;
+  dynamic error(dynamic response) => getJsonField(
+        response,
+        r'''$.error''',
+      );
+  dynamic errorHuman(dynamic response) => getJsonField(
+        response,
+        r'''$.error_human''',
+      );
+}
+
+class CreateZamadUserCall {
+  Future<ApiCallResponse> call({
+    String? userEmail = '',
+    String? roles = 'Customer',
+    String? authorizationToken =
+        'Token MfaSE3CHlbT58A3czVPM7E8mn3UhNlcxfTQ6OMcvixnLAdhnWO2rXooPOq0n7UqJ',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "email": "$userEmail",
+  "login": "$userEmail",
+  "roles": [
+    "$roles"
+  ]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'create zamad user',
+      apiUrl: '${CarCrashGroup.baseUrl}users',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': '$authorizationToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic customerID(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  dynamic loginMail(dynamic response) => getJsonField(
+        response,
+        r'''$.login''',
+      );
+  dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$.email''',
+      );
+  dynamic isVIP(dynamic response) => getJsonField(
+        response,
+        r'''$.vip''',
+      );
+  dynamic isVerified(dynamic response) => getJsonField(
+        response,
+        r'''$.verified''',
+      );
+  dynamic isActive(dynamic response) => getJsonField(
+        response,
+        r'''$.active''',
+      );
+  dynamic loginFailed(dynamic response) => getJsonField(
+        response,
+        r'''$.login_failed''',
+      );
+  dynamic isOutOfOffice(dynamic response) => getJsonField(
+        response,
+        r'''$.out_of_office''',
+      );
+  dynamic preferences(dynamic response) => getJsonField(
+        response,
+        r'''$.preferences''',
+      );
+  dynamic updatedByID(dynamic response) => getJsonField(
+        response,
+        r'''$.updated_by_id''',
+      );
+  dynamic createdByID(dynamic response) => getJsonField(
+        response,
+        r'''$.created_by_id''',
+      );
+  dynamic createdAt(dynamic response) => getJsonField(
+        response,
+        r'''$.created_at''',
+      );
+  dynamic updatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.updated_at''',
+      );
+  List? roleIDs(dynamic response) => getJsonField(
+        response,
+        r'''$.role_ids''',
+        true,
+      ) as List?;
+  List? twoFactorPreferenceIds(dynamic response) => getJsonField(
+        response,
+        r'''$.two_factor_preference_ids''',
+        true,
+      ) as List?;
+  List? organizationIDs(dynamic response) => getJsonField(
+        response,
+        r'''$.organization_ids''',
+        true,
+      ) as List?;
+  List? authorizationIDs(dynamic response) => getJsonField(
+        response,
+        r'''$.authorization_ids''',
+        true,
+      ) as List?;
+  List? overviewSortingIDs(dynamic response) => getJsonField(
+        response,
+        r'''$.overview_sorting_ids''',
+        true,
+      ) as List?;
+  dynamic groupIDs(dynamic response) => getJsonField(
+        response,
+        r'''$.group_ids''',
+      );
+  dynamic error(dynamic response) => getJsonField(
+        response,
+        r'''$.error''',
+      );
+  dynamic errorHuman(dynamic response) => getJsonField(
+        response,
+        r'''$.error_human''',
       );
 }
 
@@ -377,6 +639,7 @@ class GetUserBasicDataCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -434,14 +697,15 @@ class GetUserAddressCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  dynamic data(dynamic response) => getJsonField(
+  List? data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
+      ) as List?;
   dynamic dataID(dynamic response) => getJsonField(
         response,
         r'''$.data[:].id''',
@@ -512,8 +776,14 @@ class PaymentHistoryDetailsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
+
+  dynamic time(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].transactionTime''',
+      );
 }
 
 /// End connect car api Group Code
@@ -543,6 +813,7 @@ class UserLoginCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -594,7 +865,6 @@ class UserCredentialsResetCall {
       headers: {
         'Content-Type': 'application/json',
         'token': 'Barear $token',
-        'Origin': 'https://dev.app.connectcar.cl',
       },
       params: {},
       body: ffApiRequestBody,
@@ -603,6 +873,7 @@ class UserCredentialsResetCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -619,7 +890,6 @@ class UserSuspcriptionsCall {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
-        'Origin': 'https://dev.app.connectcar.cl',
       },
       params: {
         'userId': userId,
@@ -628,6 +898,7 @@ class UserSuspcriptionsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+      alwaysAllowBody: false,
     );
   }
 
@@ -681,13 +952,13 @@ class UserSuspcriptionsCall {
       );
 }
 
-class UserInfoCall {
+class UserProfileCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     String? userId = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'User Info',
+      callName: 'user profile',
       apiUrl: 'https://fastdev.connectcar.cl/users/$userId',
       callType: ApiCallType.GET,
       headers: {
@@ -699,6 +970,7 @@ class UserInfoCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+      alwaysAllowBody: false,
     );
   }
 
@@ -757,13 +1029,13 @@ class SubscriptionsVehicleCall {
       headers: {
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
-        'Origin': 'https://dev.app.connectcar.cl',
       },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+      alwaysAllowBody: false,
     );
   }
 
@@ -813,32 +1085,33 @@ class UserVehicleImageCall {
       apiUrl:
           'https://fastdev.connectcar.cl/vehicle-images?brand=$brand&model=$model&version=$version&year=$year',
       callType: ApiCallType.GET,
-      headers: {
-        'Origin': 'https://dev.app.connectcar.cl',
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic url(dynamic response) => getJsonField(
+  static List<String>? url(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].url''',
         true,
-      );
-  static dynamic data(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .cast<String>();
+  static List? data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
-  static dynamic docId(dynamic response) => getJsonField(
+      ) as List?;
+  static List? docId(dynamic response) => getJsonField(
         response,
         r'''$.data[:].documentId''',
         true,
-      );
+      ) as List?;
   static dynamic error(dynamic response) => getJsonField(
         response,
         r'''$.error''',
@@ -859,7 +1132,6 @@ class RefreshTokenCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Origin': 'https://dev.app.connectcar.cl',
       },
       params: {},
       body: ffApiRequestBody,
@@ -868,6 +1140,7 @@ class RefreshTokenCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -913,6 +1186,7 @@ class UserIdentityProfilesCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+      alwaysAllowBody: false,
     );
   }
 
@@ -928,11 +1202,11 @@ class UserIdentityProfilesCall {
         response,
         r'''$.data[:].addressStreet''',
       );
-  static dynamic data(dynamic response) => getJsonField(
+  static List? data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
+      ) as List?;
   static dynamic error(dynamic response) => getJsonField(
         response,
         r'''$.error''',
@@ -959,6 +1233,7 @@ class PaymentHistoryCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+      alwaysAllowBody: false,
     );
   }
 
@@ -966,11 +1241,11 @@ class PaymentHistoryCall {
         response,
         r'''$.error''',
       );
-  static dynamic paymentHistoryList(dynamic response) => getJsonField(
+  static List? paymentHistoryList(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
+      ) as List?;
 }
 
 class ApiPagingParams {

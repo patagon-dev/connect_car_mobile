@@ -1,3 +1,4 @@
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -27,7 +28,6 @@ class _TireChangeWidgetState extends State<TireChangeWidget> {
     _model = createModel(context, () => TireChangeModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'tire_change'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -90,28 +90,42 @@ class _TireChangeWidgetState extends State<TireChangeWidget> {
           centerTitle: true,
           elevation: 0.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              wrapWithModel(
-                model: _model.callCenterOtherInformationModel,
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  wrapWithModel(
+                    model: _model.callCenterOtherInformationModel,
+                    updateCallback: () => setState(() {}),
+                    child: CallCenterOtherInformationWidget(
+                      claimNotification:
+                          'Debes tener en cuenta que el seguro enviará a una persona que te ayude con el cambio del neumático de repuesto, es decir, no se cambiará por un neumático nuevo.',
+                      showExtraData: false,
+                      onTap: () async {
+                        logFirebaseEvent(
+                            'TIRE_CHANGE_Container_ttbb9dat_CALLBACK');
+                        logFirebaseEvent(
+                            'call_center_other_information_navigate_b');
+                        context.safePop();
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: const AlignmentDirectional(0.0, 1.0),
+              child: wrapWithModel(
+                model: _model.navBarModel,
                 updateCallback: () => setState(() {}),
-                child: CallCenterOtherInformationWidget(
-                  claimNotification:
-                      'Debes tener en cuenta que el seguro enviará a una persona que te ayude con el cambio del neumático de repuesto, es decir, no se cambiará por un neumático nuevo.',
-                  showExtraData: false,
-                  onTap: () async {
-                    logFirebaseEvent('TIRE_CHANGE_Container_ttbb9dat_CALLBACK');
-                    logFirebaseEvent(
-                        'call_center_other_information_navigate_b');
-                    context.safePop();
-                  },
+                child: const NavBarWidget(
+                  page: 'no',
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

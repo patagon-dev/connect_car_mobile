@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -28,7 +29,6 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'reset_password'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -54,6 +54,30 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 55.0,
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFF49454F),
+            size: 25.0,
+          ),
+          onPressed: () async {
+            logFirebaseEvent('RESET_PASSWORD_arrow_back_rounded_ICN_ON');
+            logFirebaseEvent('IconButton_navigate_to');
+
+            context.pushNamed('login');
+          },
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         top: true,
         child: SingleChildScrollView(
@@ -62,7 +86,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(),
@@ -70,42 +94,27 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Align(
-                          alignment: const AlignmentDirectional(-1.00, 0.00),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 25.0, 0.0, 20.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'RESET_PASSWORD_PAGE_Icon_jqn3yg82_ON_TAP');
-                                logFirebaseEvent('Icon_navigate_back');
-                                context.safePop();
-                              },
-                              child: Icon(
-                                Icons.chevron_left,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 30.0,
-                              ),
-                            ),
+                        Container(
+                          height: MediaQuery.sizeOf(context).height * 0.05,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 40.0, 0.0, 95.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/connect_car_logo.png',
-                              width: 300.0,
-                              height: 80.0,
-                              fit: BoxFit.fitWidth,
-                            ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/connect_car_logo.png',
+                            width: 300.0,
+                            height: 80.0,
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                        Container(
+                          height: MediaQuery.sizeOf(context).height * 0.05,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
                         ),
                         Padding(
@@ -143,55 +152,57 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                                 ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 40.0, 0.0, 0.0),
-                          child: SizedBox(
+                        Container(
+                          height: MediaQuery.sizeOf(context).height * 0.07,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 350.0,
+                          child: custom_widgets.ResetPasswordForm(
                             width: double.infinity,
                             height: 350.0,
-                            child: custom_widgets.ResetPasswordForm(
-                              width: double.infinity,
-                              height: 350.0,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'RESET_PASSWORD_Container_rq5u30ro_CALLBA');
-                                logFirebaseEvent(
-                                    'ResetPasswordForm_update_app_state');
-                                setState(() {
-                                  FFAppState().authLoader = true;
-                                });
-                                logFirebaseEvent(
-                                    'ResetPasswordForm_backend_call');
-                                _model.resetPasswordResponse =
-                                    await UserCredentialsResetCall.call(
-                                  token: FFAppState().userSessionToken,
-                                  email: FFAppState().resetEmail,
-                                );
-                                if ((_model.resetPasswordResponse?.succeeded ??
-                                    true)) {
-                                  if (getJsonField(
-                                        (_model.resetPasswordResponse
-                                                ?.jsonBody ??
-                                            ''),
-                                        r'''$.data''',
-                                      ) ==
-                                      null) {
-                                    logFirebaseEvent(
-                                        'ResetPasswordForm_navigate_to');
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'RESET_PASSWORD_Container_rq5u30ro_CALLBA');
+                              logFirebaseEvent(
+                                  'ResetPasswordForm_update_app_state');
+                              setState(() {
+                                FFAppState().authLoader = true;
+                              });
+                              logFirebaseEvent(
+                                  'ResetPasswordForm_backend_call');
+                              _model.resetPasswordResponse =
+                                  await UserCredentialsResetCall.call(
+                                token: FFAppState().userSessionToken,
+                                email: FFAppState().resetEmail,
+                              );
+                              if ((_model.resetPasswordResponse?.succeeded ??
+                                  true)) {
+                                if (getJsonField(
+                                      (_model.resetPasswordResponse?.jsonBody ??
+                                          ''),
+                                      r'''$.data''',
+                                    ) ==
+                                    null) {
+                                  logFirebaseEvent(
+                                      'ResetPasswordForm_navigate_to');
 
-                                    context.pushNamed(
-                                        'reset_password_verification');
-                                  }
+                                  context
+                                      .pushNamed('reset_password_verification');
                                 }
-                                logFirebaseEvent(
-                                    'ResetPasswordForm_update_app_state');
-                                setState(() {
-                                  FFAppState().authLoader = false;
-                                });
+                              }
+                              logFirebaseEvent(
+                                  'ResetPasswordForm_update_app_state');
+                              setState(() {
+                                FFAppState().authLoader = false;
+                              });
 
-                                setState(() {});
-                              },
-                            ),
+                              setState(() {});
+                            },
                           ),
                         ),
                       ],

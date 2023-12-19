@@ -28,8 +28,6 @@ class _DropdownCompWidgetState extends State<DropdownCompWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DropdownCompModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -1,12 +1,18 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/dropdown_comp_widget.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'car_crash_form_widget.dart' show CarCrashFormWidget;
+import 'car_crash_form_n_o_t_a_c_t_u_a_l_widget.dart'
+    show CarCrashFormNOTACTUALWidget;
 import 'package:flutter/material.dart';
-import 'package:signature/signature.dart';
 
-class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
+class CarCrashFormNOTACTUALModel
+    extends FlutterFlowModel<CarCrashFormNOTACTUALWidget> {
+  ///  Local state fields for this page.
+
+  String refreshField = '1';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -24,7 +30,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _nombredelapersonaqueibaconduciendoControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -42,13 +48,16 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _rutoPasaportedelapersonaqueibaconduciendoControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
+    if (val.length > 12) {
+      return 'RUT inválido';
     }
-
+    if (!RegExp('^([1-9]|[1-9]\\d|[1-9]\\d{2})(\\.\\d{3})*\\-(\\d|k|K)\$')
+        .hasMatch(val)) {
+      return 'RUT inválido';
+    }
     return null;
   }
 
@@ -58,7 +67,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? nacionalidadControllerValidator;
   String? _nacionalidadControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -77,7 +86,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _direccinCalleynmerodelapersonaqueibaconduciendoControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -99,11 +108,11 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _ciudaddelapersonaqueibaconduciendoControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
+    if (val.length > 10) {
+      return 'Maximum 10 characters allowed, currently ${val.length}.';
     }
 
     return null;
@@ -115,7 +124,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? marcavehculoControllerValidator;
   String? _marcavehculoControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -131,7 +140,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? modelossControllerValidator;
   String? _modelossControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -147,7 +156,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? anoController1Validator;
   String? _anoController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -163,7 +172,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? patenteControllerValidator;
   String? _patenteControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -183,7 +192,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _calleendondeocurrielincidenteControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -201,7 +210,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _comunaendondeocurrielincidenteControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -219,7 +228,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _ciudadendondeocurrielincidenteControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -237,7 +246,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _velocidadalmomentodelsiniestroenkmControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -254,7 +263,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _tipodesiniestroControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -272,7 +281,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _elsiniestroseprodujoporaccinControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -289,7 +298,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _relatodeloshechosControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -305,7 +314,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? danosControllerValidator;
   String? _danosControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -324,7 +333,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? nombreControllerValidator;
   String? _nombreControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -335,18 +344,21 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   }
 
   // State field(s) for Rut widget.
-  FocusNode? rutFocusNode1;
-  TextEditingController? rutController1;
-  String? Function(BuildContext, String?)? rutController1Validator;
-  String? _rutController1Validator(BuildContext context, String? val) {
+  FocusNode? rutFocusNode;
+  TextEditingController? rutController;
+  String? Function(BuildContext, String?)? rutControllerValidator;
+  String? _rutControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
+    if (val.length > 12) {
+      return 'RUT inválido';
     }
-
+    if (!RegExp('^([1-9]|[1-9]\\d|[1-9]\\d{2})(\\.\\d{3})*\\-(\\d|k|K)\$')
+        .hasMatch(val)) {
+      return 'RUT inválido';
+    }
     return null;
   }
 
@@ -356,7 +368,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? telfonoControllerValidator;
   String? _telfonoControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -372,7 +384,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? domicilioControllerValidator;
   String? _domicilioControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -388,11 +400,11 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? mailControllerValidator;
   String? _mailControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Has to be a valid email address.';
+      return 'Email is Invalid';
     }
     return null;
   }
@@ -404,7 +416,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _compaiadesegurosControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -420,11 +432,11 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? placapatenteControllerValidator;
   String? _placapatenteControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
+    if (val.length > 10) {
+      return 'RUT inválido';
     }
 
     return null;
@@ -436,7 +448,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? marcaControllerValidator;
   String? _marcaControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -452,7 +464,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? modeloControllerValidator;
   String? _modeloControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -468,7 +480,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? anoController2Validator;
   String? _anoController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -486,29 +498,13 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   FormFieldController<String>? lesionadosValueController;
   // Model for dropdownComp component.
   late DropdownCompModel dropdownCompModel;
-  // State field(s) for Fecha widget.
-  FocusNode? fechaFocusNode;
-  TextEditingController? fechaController;
-  String? Function(BuildContext, String?)? fechaControllerValidator;
-  String? _fechaControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
-    }
-
-    return null;
-  }
-
   // State field(s) for Hora widget.
   FocusNode? horaFocusNode;
   TextEditingController? horaController;
   String? Function(BuildContext, String?)? horaControllerValidator;
   String? _horaControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -524,7 +520,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? nmerodeparteControllerValidator;
   String? _nmerodeparteControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -540,7 +536,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? nmerodefolioControllerValidator;
   String? _nmerodefolioControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -557,7 +553,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _nmerodeconstanciaControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -573,7 +569,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? citacinControllerValidator;
   String? _citacinControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -590,7 +586,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _fechadecitacinControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -606,7 +602,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? Function(BuildContext, String?)? juzgadoControllerValidator;
   String? _juzgadoControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -623,7 +619,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
   String? _nombrecompletoControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
     if (val.length < 2) {
@@ -633,34 +629,35 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     return null;
   }
 
-  // State field(s) for Rut widget.
-  FocusNode? rutFocusNode2;
-  TextEditingController? rutController2;
-  String? Function(BuildContext, String?)? rutController2Validator;
-  String? _rutController2Validator(BuildContext context, String? val) {
+  // State field(s) for Rut2 widget.
+  FocusNode? rut2FocusNode;
+  TextEditingController? rut2Controller;
+  String? Function(BuildContext, String?)? rut2ControllerValidator;
+  String? _rut2ControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo obligatorio';
     }
 
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
+    if (val.length > 12) {
+      return 'RUT inválido';
     }
-
+    if (!RegExp('^([1-9]|[1-9]\\d|[1-9]\\d{2})(\\.\\d{3})*\\-(\\d|k|K)\$')
+        .hasMatch(val)) {
+      return 'RUT inválido';
+    }
     return null;
   }
 
-  // State field(s) for Firma widget.
-  FocusNode? firmaFocusNode;
-  TextEditingController? firmaController;
-  String? Function(BuildContext, String?)? firmaControllerValidator;
-  // State field(s) for Signature widget.
-  SignatureController? signatureController;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
-  // Stores action output result for [Backend Call - API (raise ticket of car crash)] action in Button widget.
-  ApiCallResponse? formResponse;
+  // Stores action output result for [Backend Call - API (create zamad user)] action in Button widget.
+  ApiCallResponse? createUserResponse;
+  // Stores action output result for [Custom Action - checkUserExistInZamad] action in Button widget.
+  bool? checkUserIsExist;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
 
   /// Initialization and disposal methods.
 
@@ -694,7 +691,7 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
         _relatodeloshechosControllerValidator;
     danosControllerValidator = _danosControllerValidator;
     nombreControllerValidator = _nombreControllerValidator;
-    rutController1Validator = _rutController1Validator;
+    rutControllerValidator = _rutControllerValidator;
     telfonoControllerValidator = _telfonoControllerValidator;
     domicilioControllerValidator = _domicilioControllerValidator;
     mailControllerValidator = _mailControllerValidator;
@@ -704,7 +701,6 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     modeloControllerValidator = _modeloControllerValidator;
     anoController2Validator = _anoController2Validator;
     dropdownCompModel = createModel(context, () => DropdownCompModel());
-    fechaControllerValidator = _fechaControllerValidator;
     horaControllerValidator = _horaControllerValidator;
     nmerodeparteControllerValidator = _nmerodeparteControllerValidator;
     nmerodefolioControllerValidator = _nmerodefolioControllerValidator;
@@ -714,7 +710,8 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     fechadecitacinControllerValidator = _fechadecitacinControllerValidator;
     juzgadoControllerValidator = _juzgadoControllerValidator;
     nombrecompletoControllerValidator = _nombrecompletoControllerValidator;
-    rutController2Validator = _rutController2Validator;
+    rut2ControllerValidator = _rut2ControllerValidator;
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   @override
@@ -774,8 +771,8 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     nombreFocusNode?.dispose();
     nombreController?.dispose();
 
-    rutFocusNode1?.dispose();
-    rutController1?.dispose();
+    rutFocusNode?.dispose();
+    rutController?.dispose();
 
     telfonoFocusNode?.dispose();
     telfonoController?.dispose();
@@ -802,9 +799,6 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     anoController2?.dispose();
 
     dropdownCompModel.dispose();
-    fechaFocusNode?.dispose();
-    fechaController?.dispose();
-
     horaFocusNode?.dispose();
     horaController?.dispose();
 
@@ -829,13 +823,10 @@ class CarCrashFormModel extends FlutterFlowModel<CarCrashFormWidget> {
     nombrecompletoFocusNode?.dispose();
     nombrecompletoController?.dispose();
 
-    rutFocusNode2?.dispose();
-    rutController2?.dispose();
+    rut2FocusNode?.dispose();
+    rut2Controller?.dispose();
 
-    firmaFocusNode?.dispose();
-    firmaController?.dispose();
-
-    signatureController?.dispose();
+    navBarModel.dispose();
   }
 
   /// Action blocks are added here.

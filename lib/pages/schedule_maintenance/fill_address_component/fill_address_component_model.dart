@@ -1,3 +1,5 @@
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'fill_address_component_widget.dart' show FillAddressComponentWidget;
@@ -5,9 +7,24 @@ import 'package:flutter/material.dart';
 
 class FillAddressComponentModel
     extends FlutterFlowModel<FillAddressComponentWidget> {
+  ///  Local state fields for this component.
+
+  List<CommunesModelStruct> communeList = [];
+  void addToCommuneList(CommunesModelStruct item) => communeList.add(item);
+  void removeFromCommuneList(CommunesModelStruct item) =>
+      communeList.remove(item);
+  void removeAtIndexFromCommuneList(int index) => communeList.removeAt(index);
+  void insertAtIndexInCommuneList(int index, CommunesModelStruct item) =>
+      communeList.insert(index, item);
+  void updateCommuneListAtIndex(
+          int index, Function(CommunesModelStruct) updateFn) =>
+      communeList[index] = updateFn(communeList[index]);
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - communiesList] action in fill_address_component widget.
+  List<CommunesModelStruct>? communesList;
   // State field(s) for Calle widget.
   FocusNode? calleFocusNode;
   TextEditingController? calleController;
@@ -28,40 +45,17 @@ class FillAddressComponentModel
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
-  // State field(s) for Ciudad widget.
-  FocusNode? ciudadFocusNode;
-  TextEditingController? ciudadController;
-  String? Function(BuildContext, String?)? ciudadControllerValidator;
-  String? _ciudadControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
-
+  // Stores action output result for [Custom Action - communiesList] action in DropDown widget.
+  List<CommunesModelStruct>? communiesListData;
   // State field(s) for DropDown widget.
   String? dropDownValue2;
   FormFieldController<String>? dropDownValueController2;
-  // State field(s) for Comuna widget.
-  FocusNode? comunaFocusNode;
-  TextEditingController? comunaController;
-  String? Function(BuildContext, String?)? comunaControllerValidator;
-  String? _comunaControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
 
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
     calleControllerValidator = _calleControllerValidator;
-    ciudadControllerValidator = _ciudadControllerValidator;
-    comunaControllerValidator = _comunaControllerValidator;
   }
 
   @override
@@ -71,12 +65,6 @@ class FillAddressComponentModel
 
     departamentocasapisoetcFocusNode?.dispose();
     departamentocasapisoetcController?.dispose();
-
-    ciudadFocusNode?.dispose();
-    ciudadController?.dispose();
-
-    comunaFocusNode?.dispose();
-    comunaController?.dispose();
   }
 
   /// Action blocks are added here.

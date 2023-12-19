@@ -42,8 +42,6 @@ class _CarDetailComponentDeprecatedWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CarDetailComponentDeprecatedModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -70,7 +68,7 @@ class _CarDetailComponentDeprecatedWidgetState
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [

@@ -1,3 +1,4 @@
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -28,7 +29,6 @@ class _CraneServiceWidgetState extends State<CraneServiceWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'crane_service'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -91,27 +91,40 @@ class _CraneServiceWidgetState extends State<CraneServiceWidget> {
           centerTitle: true,
           elevation: 0.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              wrapWithModel(
-                model: _model.callCenterOtherInformationModel,
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  wrapWithModel(
+                    model: _model.callCenterOtherInformationModel,
+                    updateCallback: () => setState(() {}),
+                    child: CallCenterOtherInformationWidget(
+                      showExtraData: true,
+                      onTap: () async {
+                        logFirebaseEvent(
+                            'CRANE_SERVICE_Container_mx6uak2k_CALLBAC');
+                        logFirebaseEvent(
+                            'call_center_other_information_navigate_b');
+                        context.safePop();
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: const AlignmentDirectional(0.0, 1.0),
+              child: wrapWithModel(
+                model: _model.navBarModel,
                 updateCallback: () => setState(() {}),
-                child: CallCenterOtherInformationWidget(
-                  showExtraData: true,
-                  onTap: () async {
-                    logFirebaseEvent(
-                        'CRANE_SERVICE_Container_mx6uak2k_CALLBAC');
-                    logFirebaseEvent(
-                        'call_center_other_information_navigate_b');
-                    context.safePop();
-                  },
+                child: const NavBarWidget(
+                  page: 'no',
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'car_description_model.dart';
 export 'car_description_model.dart';
@@ -42,8 +43,6 @@ class _CarDescriptionWidgetState extends State<CarDescriptionWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CarDescriptionModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -134,9 +133,10 @@ class _CarDescriptionWidgetState extends State<CarDescriptionWidget> {
                             color: const Color(0xFFF3F4F9),
                             borderRadius: BorderRadius.circular(3.0),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                3.0, 3.0, 3.0, 3.0),
+                          child:
+                              // The licence plate now doesn't need to have a space between group of 2 characters. So I have remote the function that splits the licence plate characters.
+                              Padding(
+                            padding: const EdgeInsets.all(3.0),
                             child: Text(
                               'Patente ${widget.plateNumber}',
                               maxLines: 1,
@@ -181,6 +181,200 @@ class _CarDescriptionWidgetState extends State<CarDescriptionWidget> {
               ),
             ],
           ),
+          if (widget.showMoreDetails == true)
+            Container(
+              width: MediaQuery.sizeOf(context).width * 0.8,
+              decoration: const BoxDecoration(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 4.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/kms.png',
+                                width: 16.33,
+                                height: 16.33,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  6.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                '6.500 kms. ocupados',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      color: const Color(0xFF131353),
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          '18.000 kms. al año',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Plus Jakarta Sans',
+                                color: const Color(0xFF979797),
+                                fontSize: 11.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  LinearPercentIndicator(
+                    percent: 0.5,
+                    lineHeight: 8.0,
+                    animation: false,
+                    animateFromLastPercent: true,
+                    progressColor: FlutterFlowTheme.of(context).primary,
+                    backgroundColor: const Color(0xFFD9D9D9),
+                    barRadius: const Radius.circular(140.0),
+                    padding: EdgeInsets.zero,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: Image.asset(
+                                  'assets/images/calender.png',
+                                  width: 23.38,
+                                  height: 27.0,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 2.0, 0.0, 0.0),
+                                child: Text(
+                                  '3 meses',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Plus Jakarta Sans',
+                                        color: const Color(0xFF131353),
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
+                              Text(
+                                'de 12 meses suscritos',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: const Color(0xFF131353),
+                                      fontSize: 11.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 70.0,
+                          child: VerticalDivider(
+                            thickness: 1.0,
+                            color: Color(0xFFE2E2E2),
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: Image.asset(
+                                  'assets/images/card.png',
+                                  width: 23.38,
+                                  height: 27.0,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 3.0, 0.0, 0.0),
+                                child: Text(
+                                  '01/02/2023',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Plus Jakarta Sans',
+                                        color: const Color(0xFF131353),
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 1.0, 0.0, 0.0),
+                                child: Text(
+                                  'Próximo pago',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Plus Jakarta Sans',
+                                        color: const Color(0xFF131353),
+                                        fontSize: 11.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
         ],
       ),
     );

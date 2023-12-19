@@ -27,8 +27,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BottomNavBarModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -51,7 +49,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
         ),
-        alignment: const AlignmentDirectional(0.00, 0.00),
+        alignment: const AlignmentDirectional(0.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +77,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.00, -1.00),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
@@ -144,7 +142,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.00, -1.00),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),

@@ -10,7 +10,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Custom Action - login] action in SignInForm widget.
-  String? msg;
+  bool? msg;
 
   /// Initialization and disposal methods.
 

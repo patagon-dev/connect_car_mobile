@@ -31,15 +31,12 @@ class _LoginWidgetState extends State<LoginWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('LOGIN_PAGE_login_ON_INIT_STATE');
-      if ((FFAppState().userSessionToken != '') &&
-          (FFAppState().loginPreferences == true)) {
+      if (FFAppState().loginPreferences == true) {
         logFirebaseEvent('login_navigate_to');
 
-        context.pushNamed('suscripciones');
+        context.goNamed('suscripciones');
       }
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -62,72 +59,91 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-      body: SafeArea(
-        top: true,
-        child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 95.0),
-                  child: ClipRRect(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(26.0, 0.0, 26.0, 0.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * 0.07,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                  ),
+                  ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
                       'assets/images/connect_car_logo.png',
-                      width: 300.0,
-                      height: 80.0,
+                      width: MediaQuery.sizeOf(context).width * 0.85,
+                      height: MediaQuery.sizeOf(context).height * 0.15,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
-                  child: Text(
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * 0.07,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                  ),
+                  Text(
                     'Bienvenido a tu sesión privada',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Plus Jakarta Sans',
                           color: const Color(0xFF131353),
                           fontSize: 18.0,
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.bold,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
                   ),
-                ),
-                SizedBox(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 340.0,
-                  child: custom_widgets.SignInForm(
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * 0.08,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                  ),
+                  SizedBox(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: 340.0,
-                    onTap: () async {
-                      logFirebaseEvent(
-                          'LOGIN_PAGE_Container_fip7f4yx_CALLBACK');
-                      logFirebaseEvent('SignInForm_custom_action');
-                      _model.msg = await actions.login(
-                        context,
-                        FFAppState().signInEmail,
-                        FFAppState().signInPassword,
-                      );
+                    child: custom_widgets.SignInForm(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 340.0,
+                      onTap: () async {
+                        logFirebaseEvent(
+                            'LOGIN_PAGE_Container_fip7f4yx_CALLBACK');
+                        logFirebaseEvent('SignInForm_update_app_state');
+                        setState(() {
+                          FFAppState().emailPersistent =
+                              FFAppState().signInEmail;
+                        });
+                        logFirebaseEvent('SignInForm_custom_action');
+                        _model.msg = await actions.login(
+                          context,
+                          FFAppState().signInEmail,
+                          FFAppState().signInPassword,
+                        );
 
-                      setState(() {});
-                    },
-                    navigate: () async {
-                      logFirebaseEvent(
-                          'LOGIN_PAGE_Container_fip7f4yx_CALLBACK');
-                      logFirebaseEvent('SignInForm_navigate_to');
+                        setState(() {});
+                      },
+                      navigate: () async {
+                        logFirebaseEvent(
+                            'LOGIN_PAGE_Container_fip7f4yx_CALLBACK');
+                        logFirebaseEvent('SignInForm_navigate_to');
 
-                      context.goNamed('reset_password');
-                    },
+                        context.goNamed('reset_password');
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

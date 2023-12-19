@@ -1,9 +1,9 @@
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/roadside_assistance/call_center_other_information/call_center_other_information_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -31,14 +31,6 @@ class _OtherUnforeseenEventsWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'other_unforeseen_events'});
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('OTHER_UNFORESEEN_EVENTS_other_unforeseen');
-      logFirebaseEvent('other_unforeseen_events_navigate_back');
-      context.safePop();
-    });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -101,29 +93,42 @@ class _OtherUnforeseenEventsWidgetState
           centerTitle: true,
           elevation: 0.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              wrapWithModel(
-                model: _model.callCenterOtherInformationModel,
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  wrapWithModel(
+                    model: _model.callCenterOtherInformationModel,
+                    updateCallback: () => setState(() {}),
+                    child: CallCenterOtherInformationWidget(
+                      claimNotificationDescription:
+                          'Ante un problema no programado (como panne de combustible, descarga de batería, cerrajero o un pinchazo), debes dar aviso a la aseguradora SURA a través de uno de los siguientes canales: ',
+                      showExtraData: true,
+                      onTap: () async {
+                        logFirebaseEvent(
+                            'OTHER_UNFORESEEN_EVENTS_Container_gje081');
+                        logFirebaseEvent(
+                            'call_center_other_information_navigate_b');
+                        context.safePop();
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: const AlignmentDirectional(0.0, 1.0),
+              child: wrapWithModel(
+                model: _model.navBarModel,
                 updateCallback: () => setState(() {}),
-                child: CallCenterOtherInformationWidget(
-                  claimNotificationDescription:
-                      'Ante un problema no programado (como panne de combustible, descarga de batería, cerrajero o un pinchazo), debes dar aviso a la aseguradora SURA a través de uno de los siguientes canales: ',
-                  showExtraData: true,
-                  onTap: () async {
-                    logFirebaseEvent(
-                        'OTHER_UNFORESEEN_EVENTS_Container_gje081');
-                    logFirebaseEvent(
-                        'call_center_other_information_navigate_b');
-                    context.pop();
-                  },
+                child: const NavBarWidget(
+                  page: 'no',
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

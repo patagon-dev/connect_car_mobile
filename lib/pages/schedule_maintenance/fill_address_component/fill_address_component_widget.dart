@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -5,8 +6,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'fill_address_component_model.dart';
@@ -40,6 +42,21 @@ class _FillAddressComponentWidgetState
     super.initState();
     _model = createModel(context, () => FillAddressComponentModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('FILL_ADDRESS_COMPONENT_fill_address_comp');
+      logFirebaseEvent('fill_address_component_custom_action');
+      _model.communesList = await actions.communiesList(
+        widget.addressModel?.selectedRegion,
+        FFAppState().Regions.toList(),
+      );
+      logFirebaseEvent('fill_address_component_update_component_');
+      setState(() {
+        _model.communeList =
+            _model.communesList!.toList().cast<CommunesModelStruct>();
+      });
+    });
+
     _model.calleController ??=
         TextEditingController(text: widget.addressModel?.calle);
     _model.calleFocusNode ??= FocusNode();
@@ -47,16 +64,6 @@ class _FillAddressComponentWidgetState
     _model.departamentocasapisoetcController ??=
         TextEditingController(text: widget.addressModel?.departament);
     _model.departamentocasapisoetcFocusNode ??= FocusNode();
-
-    _model.ciudadController ??=
-        TextEditingController(text: widget.addressModel?.ciudad);
-    _model.ciudadFocusNode ??= FocusNode();
-
-    _model.comunaController ??=
-        TextEditingController(text: widget.addressModel?.comuna);
-    _model.comunaFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -71,7 +78,7 @@ class _FillAddressComponentWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(15.0, 12.0, 15.0, 12.0),
         child: Container(
@@ -127,7 +134,7 @@ class _FillAddressComponentWidgetState
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 12.0),
@@ -231,10 +238,6 @@ class _FillAddressComponentWidgetState
                               cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model.calleControllerValidator
                                   .asValidator(context),
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                    RegExp('[a-zA-Z0-9]'))
-                              ],
                             ),
                           ],
                         ),
@@ -322,16 +325,12 @@ class _FillAddressComponentWidgetState
                               validator: _model
                                   .departamentocasapisoetcControllerValidator
                                   .asValidator(context),
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                    RegExp('[a-zA-Z0-9]'))
-                              ],
                             ),
                           ],
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
@@ -346,11 +345,32 @@ class _FillAddressComponentWidgetState
                             const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                         child: FlutterFlowDropDown<String>(
                           controller: _model.dropDownValueController1 ??=
-                              FormFieldController<String>(null),
-                          options: const ['Option 1'],
-                          onChanged: (val) =>
-                              setState(() => _model.dropDownValue1 = val),
-                          height: MediaQuery.sizeOf(context).height * 0.08,
+                              FormFieldController<String>(
+                            _model.dropDownValue1 ??=
+                                widget.addressModel?.selectedRegion,
+                          ),
+                          options:
+                              FFAppState().Regions.map((e) => e.name).toList(),
+                          onChanged: (val) async {
+                            setState(() => _model.dropDownValue1 = val);
+                            logFirebaseEvent(
+                                'FILL_ADDRESS_COMPONENT_DropDown_8t2pqsu3');
+                            logFirebaseEvent('DropDown_custom_action');
+                            _model.communiesListData =
+                                await actions.communiesList(
+                              _model.dropDownValue1,
+                              FFAppState().Regions.toList(),
+                            );
+                            logFirebaseEvent('DropDown_update_component_state');
+                            setState(() {
+                              _model.communeList = _model.communiesListData!
+                                  .toList()
+                                  .cast<CommunesModelStruct>();
+                            });
+
+                            setState(() {});
+                          },
+                          height: 51.0,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
@@ -362,7 +382,7 @@ class _FillAddressComponentWidgetState
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
-                          hintText: 'Please select...',
+                          hintText: widget.addressModel?.selectedRegion,
                           icon: Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -383,82 +403,7 @@ class _FillAddressComponentWidgetState
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 10.0),
-                          child: Text(
-                            'Ciudad',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: FlutterFlowTheme.of(context).textColor,
-                                  letterSpacing: 0.5,
-                                  fontWeight: FontWeight.w500,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: _model.ciudadController,
-                        focusNode: _model.ciudadFocusNode,
-                        textInputAction: TextInputAction.done,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Color(0x7457636C),
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Color(0xFF3485FE),
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).textFieldColor,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily),
-                            ),
-                        cursorColor: FlutterFlowTheme.of(context).primary,
-                        validator: _model.ciudadControllerValidator
-                            .asValidator(context),
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp('[a-zA-Z0-9]'))
-                        ],
-                      ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
@@ -483,11 +428,15 @@ class _FillAddressComponentWidgetState
                             const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                         child: FlutterFlowDropDown<String>(
                           controller: _model.dropDownValueController2 ??=
-                              FormFieldController<String>(null),
-                          options: const ['Option 1'],
+                              FormFieldController<String>(
+                            _model.dropDownValue2 ??=
+                                widget.addressModel?.comuna,
+                          ),
+                          options:
+                              _model.communeList.map((e) => e.name).toList(),
                           onChanged: (val) =>
                               setState(() => _model.dropDownValue2 = val),
-                          height: MediaQuery.sizeOf(context).height * 0.08,
+                          height: 51.0,
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
@@ -499,7 +448,6 @@ class _FillAddressComponentWidgetState
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
-                          hintText: 'Please select...',
                           icon: Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -518,92 +466,6 @@ class _FillAddressComponentWidgetState
                           isSearchable: false,
                           isMultiSelect: false,
                         ),
-                      ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
-                                child: Text(
-                                  'Comuna',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .textColor,
-                                        letterSpacing: 0.5,
-                                        fontWeight: FontWeight.w500,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: _model.comunaController,
-                        focusNode: _model.comunaFocusNode,
-                        textInputAction: TextInputAction.done,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Color(0x7457636C),
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Color(0xFF3485FE),
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).textFieldColor,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily),
-                            ),
-                        cursorColor: FlutterFlowTheme.of(context).primary,
-                        validator: _model.comunaControllerValidator
-                            .asValidator(context),
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp('[a-zA-Z0-9]'))
-                        ],
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
@@ -624,8 +486,8 @@ class _FillAddressComponentWidgetState
                                   calle: _model.calleController.text,
                                   departament: _model
                                       .departamentocasapisoetcController.text,
-                                  ciudad: _model.ciudadController.text,
-                                  comuna: _model.comunaController.text,
+                                  comuna: _model.dropDownValue2,
+                                  selectedRegion: _model.dropDownValue1,
                                 ));
                           },
                           text: 'Guardar',

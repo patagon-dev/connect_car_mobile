@@ -43,8 +43,6 @@ class _CallCenterOtherInformationWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CallCenterOtherInformationModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -59,16 +57,16 @@ class _CallCenterOtherInformationWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 15.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 70.0),
       child: Container(
         width: double.infinity,
         height: valueOrDefault<double>(
-          widget.showExtraData == true ? 570.0 : 500.0,
+          widget.showExtraData == true ? 585.0 : 525.0,
           500.0,
         ),
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(15.0, 30.0, 15.0, 30.0),
@@ -206,7 +204,7 @@ class _CallCenterOtherInformationWidgetState
                 },
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -270,7 +268,7 @@ class _CallCenterOtherInformationWidgetState
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -596,7 +594,7 @@ class _CallCenterOtherInformationWidgetState
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.00, 1.00),
+                      alignment: const AlignmentDirectional(0.0, 1.0),
                       child: wrapWithModel(
                         model: _model.customButtonModel,
                         updateCallback: () => setState(() {}),

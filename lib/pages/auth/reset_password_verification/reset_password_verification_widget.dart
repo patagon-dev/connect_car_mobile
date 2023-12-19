@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -30,7 +31,6 @@ class _ResetPasswordVerificationWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'reset_password_verification'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -56,6 +56,29 @@ class _ResetPasswordVerificationWidgetState
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 55.0,
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFF49454F),
+            size: 25.0,
+          ),
+          onPressed: () async {
+            logFirebaseEvent('RESET_PASSWORD_VERIFICATION_arrow_back_r');
+            logFirebaseEvent('IconButton_navigate_back');
+            context.pop();
+          },
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         top: true,
         child: SingleChildScrollView(
@@ -70,41 +93,27 @@ class _ResetPasswordVerificationWidgetState
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 25.0, 0.0, 25.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent(
-                                  'RESET_PASSWORD_VERIFICATION_Icon_ceiqxcj');
-                              logFirebaseEvent('Icon_navigate_back');
-                              context.safePop();
-                            },
-                            child: Icon(
-                              Icons.chevron_left_rounded,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 30.0,
-                            ),
-                          ),
+                      Container(
+                        height: MediaQuery.sizeOf(context).height * 0.06,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 40.0, 0.0, 95.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/connect_car_logo.png',
-                            width: 300.0,
-                            height: 80.0,
-                            fit: BoxFit.fitWidth,
-                          ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/connect_car_logo.png',
+                          width: 300.0,
+                          height: 80.0,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.sizeOf(context).height * 0.06,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                       ),
                       Padding(
@@ -161,7 +170,7 @@ class _ResetPasswordVerificationWidgetState
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            30.0, 0.0, 30.0, 200.0),
+                            30.0, 0.0, 30.0, 0.0),
                         child: Text(
                           'con un link para que recuperes el acceso a tu cuenta.',
                           textAlign: TextAlign.center,
@@ -174,6 +183,13 @@ class _ResetPasswordVerificationWidgetState
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.sizeOf(context).height * 0.12,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                       ),
                       FFButtonWidget(
@@ -196,9 +212,9 @@ class _ResetPasswordVerificationWidgetState
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .titleSmallFamily,
+                                fontFamily: 'Plus Jakarta Sans',
                                 color: Colors.white,
+                                fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .titleSmallFamily),

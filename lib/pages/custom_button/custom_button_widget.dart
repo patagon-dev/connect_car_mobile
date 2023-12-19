@@ -34,8 +34,6 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CustomButtonModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -50,7 +48,7 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: FFButtonWidget(
         onPressed: () async {
           logFirebaseEvent('CUSTOM_BUTTON_COMP__BTN_ON_TAP');
@@ -65,8 +63,9 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
           iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
           color: const Color(0xFF131353),
           textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                fontFamily: 'Plus Jakarta Sans',
                 color: Colors.white,
+                fontWeight: FontWeight.bold,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
               ),

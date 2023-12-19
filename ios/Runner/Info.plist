@@ -59,6 +59,13 @@
     <string>In order for the APP to work properly, for some forms you might need to upload pictures. </string>
 	<key>NSCalendarsUsageDescription</key>
     <string>The APP requieres access to your calendar for scheduling services.</string>
+	<key>PermissionGroupNotification</key>
+    <string>need notification permission</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>

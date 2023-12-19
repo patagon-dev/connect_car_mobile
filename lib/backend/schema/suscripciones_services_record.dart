@@ -49,6 +49,11 @@ class SuscripcionesServicesRecord extends FirestoreRecord {
   bool get emergencias => _emergencias ?? false;
   bool hasEmergencias() => _emergencias != null;
 
+  // "userReferences" field.
+  DocumentReference? _userReferences;
+  DocumentReference? get userReferences => _userReferences;
+  bool hasUserReferences() => _userReferences != null;
+
   void _initializeFields() {
     _agendarMantencion = snapshotData['agendar_mantencion'] as bool?;
     _asistenciaEnRuta = snapshotData['asistencia_en_ruta'] as bool?;
@@ -57,6 +62,7 @@ class SuscripcionesServicesRecord extends FirestoreRecord {
     _gestionDeMultas = snapshotData['gestion_de_multas'] as bool?;
     _viajealExtranjero = snapshotData['viajeal_extranjero'] as bool?;
     _emergencias = snapshotData['emergencias'] as bool?;
+    _userReferences = snapshotData['userReferences'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -103,6 +109,7 @@ Map<String, dynamic> createSuscripcionesServicesRecordData({
   bool? gestionDeMultas,
   bool? viajealExtranjero,
   bool? emergencias,
+  DocumentReference? userReferences,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -113,6 +120,7 @@ Map<String, dynamic> createSuscripcionesServicesRecordData({
       'gestion_de_multas': gestionDeMultas,
       'viajeal_extranjero': viajealExtranjero,
       'emergencias': emergencias,
+      'userReferences': userReferences,
     }.withoutNulls,
   );
 
@@ -132,7 +140,8 @@ class SuscripcionesServicesRecordDocumentEquality
         e1?.arriendoAccesorios == e2?.arriendoAccesorios &&
         e1?.gestionDeMultas == e2?.gestionDeMultas &&
         e1?.viajealExtranjero == e2?.viajealExtranjero &&
-        e1?.emergencias == e2?.emergencias;
+        e1?.emergencias == e2?.emergencias &&
+        e1?.userReferences == e2?.userReferences;
   }
 
   @override
@@ -143,7 +152,8 @@ class SuscripcionesServicesRecordDocumentEquality
         e?.arriendoAccesorios,
         e?.gestionDeMultas,
         e?.viajealExtranjero,
-        e?.emergencias
+        e?.emergencias,
+        e?.userReferences
       ]);
 
   @override

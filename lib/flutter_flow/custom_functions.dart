@@ -11,9 +11,14 @@ import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
+import '/auth/firebase_auth/auth_util.dart';
 
 String sortEmail(String email) {
-  return email[0] + '****@' + email.split('@').last;
+  try {
+    return email[0] + '****@' + email.split('@').last;
+  } catch (e) {
+    return '';
+  }
 }
 
 String sortLicencePlate(String input) {
@@ -29,7 +34,6 @@ String sortLicencePlate(String input) {
 
     return output;
   } else {
-    print("ELSE NULL:-----> ${input}");
     return "";
   }
 }
@@ -124,4 +128,46 @@ String convertEmailtoBase(
   String userPassword,
 ) {
   return base64.encode(utf8.encode("$userEmail:$userPassword"));
+}
+
+dynamic setJsonForSendindSceduleMail(
+  String subject,
+  String replyTo,
+  String from,
+  String body,
+  String type,
+  bool internal,
+  String contentType,
+) {
+  return {
+    "subject": subject,
+    "reply_to": replyTo,
+    "from": from,
+    "body": body,
+    "type": type,
+    "internal": internal,
+    "content_type": contentType
+  };
+}
+
+bool rutValidation(String rut) {
+  rut = rut.replaceAll(RegExp(r'\D'), '');
+  int checkDigit = int.parse(rut[rut.length - 1]);
+  rut = rut.substring(0, rut.length - 1);
+
+  List<int> reversedRut =
+      rut.split('').map((e) => int.parse(e)).toList().reversed.toList();
+
+  int sum = 0;
+  int multiplier = 2;
+  for (int digit in reversedRut) {
+    sum += digit * multiplier;
+    multiplier = multiplier < 7 ? multiplier + 1 : 2;
+  }
+
+  int remainder = sum % 11;
+
+  int calculatedCheckDigit = remainder == 0 ? 0 : 11 - remainder;
+  print("Test:-----> $rut ${checkDigit == calculatedCheckDigit}");
+  return checkDigit == calculatedCheckDigit;
 }

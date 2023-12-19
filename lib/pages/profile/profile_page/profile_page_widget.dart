@@ -1,7 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/custom_button/custom_button_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -40,66 +42,65 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
         _model.profileLoader = true;
       });
       logFirebaseEvent('profile_page_backend_call');
-      _model.profileResponse = await UserInfoCall.call(
+      _model.profileResponse = await UserProfileCall.call(
         token: FFAppState().userSessionToken,
         userId: FFAppState().userSessionUserId,
       );
-      if ((_model.profileResponse?.succeeded ?? true)) {
-        logFirebaseEvent('profile_page_update_page_state');
-        setState(() {
-          _model.profileJson = UserInfoCall.data(
-            (_model.profileResponse?.jsonBody ?? ''),
-          );
-        });
-      } else {
-        if (functions.resetToken(UserInfoCall.error(
-          (_model.profileResponse?.jsonBody ?? ''),
-        ).toString())) {
-          logFirebaseEvent('profile_page_backend_call');
-          _model.refreshTokenResponse = await RefreshTokenCall.call(
-            refreshToken: FFAppState().refreshToken,
-          );
-          if ((_model.refreshTokenResponse?.succeeded ?? true)) {
-            logFirebaseEvent('profile_page_update_app_state');
-            FFAppState().update(() {
-              FFAppState().userSessionToken = RefreshTokenCall.accessToken(
-                (_model.refreshTokenResponse?.jsonBody ?? ''),
-              ).toString();
-              FFAppState().refreshToken = RefreshTokenCall.refreshToken(
-                (_model.refreshTokenResponse?.jsonBody ?? ''),
-              ).toString();
-            });
-          } else {
-            logFirebaseEvent('profile_page_navigate_to');
-
-            context.goNamed('login');
-
-            logFirebaseEvent('profile_page_update_app_state');
-            setState(() {
-              FFAppState().loginPreferences = false;
-              FFAppState().userSessionToken = '';
-              FFAppState().resetEmail = '';
-            });
-            logFirebaseEvent('profile_page_update_page_state');
-            setState(() {
-              _model.profileLoader = false;
-            });
-            return;
-          }
-        } else {
-          logFirebaseEvent('profile_page_update_page_state');
-          setState(() {
-            _model.profileLoader = false;
-          });
-          return;
-        }
-      }
-
       logFirebaseEvent('profile_page_backend_call');
       _model.userIdentityResponse = await UserIdentityProfilesCall.call(
         userId: FFAppState().userSessionUserId,
         token: FFAppState().userSessionToken,
       );
+      if (!((_model.profileResponse?.succeeded ?? true) ||
+          (_model.userIdentityResponse?.succeeded ?? true))) {
+        if (functions.resetToken(UserProfileCall.error(
+          (_model.profileResponse?.jsonBody ?? ''),
+        ).toString())) {
+          logFirebaseEvent('profile_page_backend_call');
+          _model.resetTokenResponse = await RefreshTokenCall.call(
+            refreshToken: FFAppState().refreshToken,
+          );
+          if ((_model.resetTokenResponse?.succeeded ?? true)) {
+            logFirebaseEvent('profile_page_update_app_state');
+            setState(() {
+              FFAppState().userSessionToken = RefreshTokenCall.accessToken(
+                (_model.resetTokenResponse?.jsonBody ?? ''),
+              ).toString();
+              FFAppState().refreshToken = RefreshTokenCall.refreshToken(
+                (_model.resetTokenResponse?.jsonBody ?? ''),
+              ).toString();
+            });
+          } else {
+            logFirebaseEvent('profile_page_update_app_state');
+            setState(() {
+              FFAppState().loginPreferences = false;
+            });
+            logFirebaseEvent('profile_page_update_page_state');
+            setState(() {
+              _model.profileLoader = false;
+            });
+            logFirebaseEvent('profile_page_navigate_to');
+
+            context.goNamed('login');
+
+            return;
+          }
+        } else {
+          logFirebaseEvent('profile_page_update_app_state');
+          setState(() {
+            FFAppState().loginPreferences = false;
+          });
+          logFirebaseEvent('profile_page_update_page_state');
+          setState(() {
+            _model.profileLoader = false;
+          });
+          logFirebaseEvent('profile_page_navigate_to');
+
+          context.goNamed('login');
+
+          return;
+        }
+      }
       logFirebaseEvent('profile_page_update_page_state');
       setState(() {
         _model.profileLoader = false;
@@ -113,8 +114,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
     )..addListener(() => setState(() {}));
     _model.emailController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -158,13 +157,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: SafeArea(
-        top: true,
-        child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
+      body: Stack(
+        children: [
+          Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
               Builder(
                 builder: (context) {
@@ -192,8 +188,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                     );
                   } else {
                     return Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 1.0),
+                      padding: const EdgeInsets.all(1.0),
                       child: Container(
                         width: double.infinity,
                         height: 470.0,
@@ -203,13 +198,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Container(
                             decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 5.0, 5.0, 5.0),
+                              padding: const EdgeInsets.all(5.0),
                               child: Column(
                                 children: [
                                   Align(
@@ -218,9 +211,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                       isScrollable: true,
                                       labelColor: const Color(0xFF131353),
                                       unselectedLabelColor: const Color(0xFF979797),
-                                      labelPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              10.0, 10.0, 10.0, 10.0),
+                                      labelPadding: const EdgeInsets.all(10.0),
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -283,12 +274,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        5.0,
-                                                                        5.0,
-                                                                        5.0),
+                                                                const EdgeInsets.all(
+                                                                    5.0),
                                                             child: Text(
                                                               'Nombre',
                                                               style: FlutterFlowTheme
@@ -315,17 +302,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        5.0,
-                                                                        5.0,
-                                                                        5.0),
+                                                                const EdgeInsets.all(
+                                                                    5.0),
                                                             child: Text(
-                                                              getJsonField(
-                                                                _model
-                                                                    .profileJson,
-                                                                r'''$.firstname''',
+                                                              UserProfileCall
+                                                                  .firstName(
+                                                                (_model.profileResponse
+                                                                        ?.jsonBody ??
+                                                                    ''),
                                                               ).toString(),
                                                               maxLines: 1,
                                                               style: FlutterFlowTheme
@@ -408,10 +392,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                       5.0,
                                                                       5.0),
                                                           child: Text(
-                                                            getJsonField(
-                                                              _model
-                                                                  .profileJson,
-                                                              r'''$.lastname''',
+                                                            UserProfileCall
+                                                                .lastName(
+                                                              (_model.profileResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
                                                             ).toString(),
                                                             maxLines: 1,
                                                             style: FlutterFlowTheme
@@ -454,12 +439,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0),
+                                                              const EdgeInsets.all(
+                                                                  5.0),
                                                           child: Text(
                                                             'Email',
                                                             style: FlutterFlowTheme
@@ -487,17 +468,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0),
+                                                              const EdgeInsets.all(
+                                                                  5.0),
                                                           child: Text(
-                                                            getJsonField(
-                                                              _model
-                                                                  .profileJson,
-                                                              r'''$.email''',
+                                                            UserProfileCall
+                                                                .email(
+                                                              (_model.profileResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
                                                             ).toString(),
                                                             maxLines: 1,
                                                             style: FlutterFlowTheme
@@ -540,12 +518,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0),
+                                                              const EdgeInsets.all(
+                                                                  5.0),
                                                           child: Text(
                                                             'Teléfono',
                                                             style: FlutterFlowTheme
@@ -573,12 +547,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0,
-                                                                      5.0),
+                                                              const EdgeInsets.all(
+                                                                  5.0),
                                                           child: Text(
                                                             UserIdentityProfilesCall
                                                                 .phone(
@@ -626,7 +596,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                     title: 'Cerrar sesión',
                                                     onTap: () async {
                                                       logFirebaseEvent(
-                                                          'PROFILE_Container_xxupjen7_CALLBACK');
+                                                          'PROFILE_Container_frnaitm0_CALLBACK');
+                                                      logFirebaseEvent(
+                                                          'custom_button_custom_action');
+                                                      await actions
+                                                          .unsubscribeTopic();
                                                       logFirebaseEvent(
                                                           'custom_button_update_app_state');
                                                       FFAppState().update(() {
@@ -892,12 +866,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                             10.0),
                                                               ),
                                                               child: Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        15.0,
-                                                                        15.0,
-                                                                        15.0,
-                                                                        15.0),
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(
+                                                                            15.0),
                                                                 child: Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -965,7 +937,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                   'Enviar link',
                                                               onTap: () async {
                                                                 logFirebaseEvent(
-                                                                    'PROFILE_Container_d7r0fhsx_CALLBACK');
+                                                                    'PROFILE_Container_f5fqpwp9_CALLBACK');
+                                                                var shouldSetState =
+                                                                    false;
                                                                 logFirebaseEvent(
                                                                     'custom_button_validate_form');
                                                                 if (_model.formKey
@@ -988,6 +962,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                   token: FFAppState()
                                                                       .userSessionToken,
                                                                 );
+                                                                shouldSetState =
+                                                                    true;
                                                                 if ((_model
                                                                         .sendLinkResponse
                                                                         ?.succeeded ??
@@ -996,7 +972,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                         (_model.sendLinkResponse?.jsonBody ??
                                                                             ''),
                                                                         r'''$.data''',
-                                                                      ) ==
+                                                                      ) !=
                                                                       null) {
                                                                     logFirebaseEvent(
                                                                         'custom_button_show_snack_bar');
@@ -1054,6 +1030,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                         'Email inválido',
                                                                         style:
                                                                             TextStyle(
+                                                                          fontFamily:
+                                                                              'Plus Jakarta Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -1066,9 +1044,87 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                               0xFFFF0000),
                                                                     ),
                                                                   );
+                                                                  if (functions
+                                                                      .resetToken(
+                                                                          UserProfileCall
+                                                                              .error(
+                                                                    (_model.profileResponse
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                  ).toString())) {
+                                                                    logFirebaseEvent(
+                                                                        'custom_button_backend_call');
+                                                                    _model.resetTokenRespons =
+                                                                        await RefreshTokenCall
+                                                                            .call(
+                                                                      refreshToken:
+                                                                          FFAppState()
+                                                                              .refreshToken,
+                                                                    );
+                                                                    shouldSetState =
+                                                                        true;
+                                                                    if ((_model
+                                                                            .resetTokenRespons
+                                                                            ?.succeeded ??
+                                                                        true)) {
+                                                                      logFirebaseEvent(
+                                                                          'custom_button_update_app_state');
+                                                                      setState(
+                                                                          () {
+                                                                        FFAppState().userSessionToken =
+                                                                            FFAppState().userSessionToken;
+                                                                        FFAppState().refreshToken =
+                                                                            FFAppState().refreshToken;
+                                                                      });
+                                                                    } else {
+                                                                      logFirebaseEvent(
+                                                                          'custom_button_update_app_state');
+                                                                      setState(
+                                                                          () {
+                                                                        FFAppState().loginPreferences =
+                                                                            false;
+                                                                      });
+                                                                      logFirebaseEvent(
+                                                                          'custom_button_update_page_state');
+                                                                      logFirebaseEvent(
+                                                                          'custom_button_navigate_to');
+                                                                      if (shouldSetState) {
+                                                                        setState(
+                                                                            () {});
+                                                                      }
+                                                                      return;
+                                                                    }
+                                                                  } else {
+                                                                    logFirebaseEvent(
+                                                                        'custom_button_update_app_state');
+                                                                    setState(
+                                                                        () {
+                                                                      FFAppState()
+                                                                              .loginPreferences =
+                                                                          false;
+                                                                    });
+                                                                    logFirebaseEvent(
+                                                                        'custom_button_update_page_state');
+                                                                    setState(
+                                                                        () {});
+                                                                    logFirebaseEvent(
+                                                                        'custom_button_navigate_to');
+
+                                                                    context.goNamed(
+                                                                        'login');
+
+                                                                    if (shouldSetState) {
+                                                                      setState(
+                                                                          () {});
+                                                                    }
+                                                                    return;
+                                                                  }
                                                                 }
 
-                                                                setState(() {});
+                                                                if (shouldSetState) {
+                                                                  setState(
+                                                                      () {});
+                                                                }
                                                               },
                                                             ),
                                                           ),
@@ -1096,7 +1152,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
               ),
             ],
           ),
-        ),
+          Align(
+            alignment: const AlignmentDirectional(0.0, 1.0),
+            child: wrapWithModel(
+              model: _model.navBarModel,
+              updateCallback: () => setState(() {}),
+              child: const NavBarWidget(
+                page: 'profil',
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

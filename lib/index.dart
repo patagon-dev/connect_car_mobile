@@ -1,6 +1,6 @@
 // Export pages
-export '/crash_form/car_crash_form/car_crash_form_widget.dart'
-    show CarCrashFormWidget;
+export '/car_crash_form_n_o_t_a_c_t_u_a_l/car_crash_form_n_o_t_a_c_t_u_a_l_widget.dart'
+    show CarCrashFormNOTACTUALWidget;
 export '/pages/profile/profile_page/profile_page_widget.dart'
     show ProfilePageWidget;
 export '/pages/auth/login/login_widget.dart' show LoginWidget;
@@ -8,7 +8,7 @@ export '/pages/auth/reset_password/reset_password_widget.dart'
     show ResetPasswordWidget;
 export '/pages/auth/reset_password_verification/reset_password_verification_widget.dart'
     show ResetPasswordVerificationWidget;
-export '/pages/subscriptions/suscripciones/suscripciones_widget.dart'
+export '/pages/suscripciones/suscripciones_widget.dart'
     show SuscripcionesWidget;
 export '/pages/subscriptions/suscripciones_details/suscripciones_details_widget.dart'
     show SuscripcionesDetailsWidget;
@@ -33,12 +33,11 @@ export '/pages/roadside_assistance/crane_service/crane_service_widget.dart'
     show CraneServiceWidget;
 export '/pages/roadside_assistance/light_mechanics/light_mechanics_widget.dart'
     show LightMechanicsWidget;
-export '/web_part/log_in/log_in_page/log_in_page_widget.dart'
-    show LogInPageWidget;
+export '/web_part/log_in_page/log_in_page_widget.dart' show LogInPageWidget;
 export '/web_part/log_in/reset_page/reset_page_widget.dart'
     show ResetPageWidget;
 export '/web_part/log_in/reset_password_success/reset_password_success_widget.dart'
     show ResetPasswordSuccessWidget;
 export '/crash_form/car_crash_form_copy/car_crash_form_copy_widget.dart'
     show CarCrashFormCopyWidget;
-export '/test/test_widget.dart' show TestWidget;
+export '/pages/test/test_widget.dart' show TestWidget;

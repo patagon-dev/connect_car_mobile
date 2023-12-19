@@ -1,3 +1,4 @@
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -29,7 +30,6 @@ class _RoadsideAssistancePageWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'roadside_assistance_page'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -93,57 +93,55 @@ class _RoadsideAssistancePageWidgetState
           centerTitle: true,
           elevation: 0.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                  child: Padding(
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 20.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(-1.00, -1.00),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 10.0),
-                            child: Text(
-                              'Servicios que cubre el seguro',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    color: Colors.black,
-                                    fontSize: 13.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 70.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            15.0, 20.0, 15.0, 20.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: const AlignmentDirectional(-1.0, -1.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  'Servicios que cubre el seguro',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Plus Jakarta Sans',
+                                        color: Colors.black,
+                                        fontSize: 13.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 5.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   InkWell(
                                     splashColor: Colors.transparent,
@@ -205,13 +203,6 @@ class _RoadsideAssistancePageWidgetState
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
                                   InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -272,13 +263,6 @@ class _RoadsideAssistancePageWidgetState
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
                                   InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -341,20 +325,14 @@ class _RoadsideAssistancePageWidgetState
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 5.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   InkWell(
                                     splashColor: Colors.transparent,
@@ -416,13 +394,6 @@ class _RoadsideAssistancePageWidgetState
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
                                   InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -483,13 +454,6 @@ class _RoadsideAssistancePageWidgetState
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
                                   InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -552,20 +516,14 @@ class _RoadsideAssistancePageWidgetState
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 5.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   InkWell(
                                     splashColor: Colors.transparent,
@@ -630,16 +588,26 @@ class _RoadsideAssistancePageWidgetState
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: const AlignmentDirectional(0.0, 1.0),
+              child: wrapWithModel(
+                model: _model.navBarModel,
+                updateCallback: () => setState(() {}),
+                child: const NavBarWidget(
+                  page: 'no',
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -28,8 +28,6 @@ class _ResetPageWidgetState extends State<ResetPageWidget> {
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'ResetPage'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -84,7 +82,7 @@ class _ResetPageWidgetState extends State<ResetPageWidget> {
                           ],
                         ),
                       Align(
-                        alignment: const AlignmentDirectional(0.00, 0.00),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(

@@ -29,7 +29,6 @@ class _ResetPasswordSuccessWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'ResetPasswordSuccess'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -72,7 +71,7 @@ class _ResetPasswordSuccessWidgetState
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,

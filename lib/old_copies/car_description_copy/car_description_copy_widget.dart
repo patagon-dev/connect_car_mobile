@@ -44,8 +44,6 @@ class _CarDescriptionCopyWidgetState extends State<CarDescriptionCopyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CarDescriptionCopyModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -34,8 +34,6 @@ class _PaymentHistoryComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentHistoryComponentModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -178,52 +176,9 @@ class _PaymentHistoryComponentWidgetState
                         ),
                       ],
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 5.0),
-                          child: Text(
-                            'Estado',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 11.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                          ),
-                        ),
-                        Text(
-                          valueOrDefault<String>(
-                            getJsonField(
-                              paymentHistoryDataItem,
-                              r'''$.instrument''',
-                            ).toString(),
-                            'N/A',
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Plus Jakarta Sans',
-                                fontSize: 11.0,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
-                              ),
-                        ),
-                      ],
-                    ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 26.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 19.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -232,7 +187,7 @@ class _PaymentHistoryComponentWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 5.0),
                             child: Text(
-                              'Bol/Fact',
+                              'Estado',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -259,7 +214,6 @@ class _PaymentHistoryComponentWidgetState
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: FlutterFlowTheme.of(context).primary,
                                   fontSize: 11.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()

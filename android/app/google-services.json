@@ -12,7 +12,12 @@
           "package_name": "cl.soluciones.car.connect"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "61195030950-br1c8m37qcv63i0m9l1r94btvfi9d41f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAaMfAlinl4VvTei3DtlH9qhKxKXnPo0gI"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61195030950-br1c8m37qcv63i0m9l1r94btvfi9d41f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +41,12 @@
           "package_name": "com.car.connect"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "61195030950-br1c8m37qcv63i0m9l1r94btvfi9d41f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAaMfAlinl4VvTei3DtlH9qhKxKXnPo0gI"
@@ -39,7 +54,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61195030950-br1c8m37qcv63i0m9l1r94btvfi9d41f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

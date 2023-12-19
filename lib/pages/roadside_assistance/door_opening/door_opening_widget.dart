@@ -1,3 +1,4 @@
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -28,7 +29,6 @@ class _DoorOpeningWidgetState extends State<DoorOpeningWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'door_opening'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -91,27 +91,40 @@ class _DoorOpeningWidgetState extends State<DoorOpeningWidget> {
           centerTitle: true,
           elevation: 0.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              wrapWithModel(
-                model: _model.callCenterOtherInformationModel,
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  wrapWithModel(
+                    model: _model.callCenterOtherInformationModel,
+                    updateCallback: () => setState(() {}),
+                    child: CallCenterOtherInformationWidget(
+                      showExtraData: false,
+                      onTap: () async {
+                        logFirebaseEvent(
+                            'DOOR_OPENING_Container_lmixdlhn_CALLBACK');
+                        logFirebaseEvent(
+                            'call_center_other_information_navigate_b');
+                        context.safePop();
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: const AlignmentDirectional(0.0, 1.0),
+              child: wrapWithModel(
+                model: _model.navBarModel,
                 updateCallback: () => setState(() {}),
-                child: CallCenterOtherInformationWidget(
-                  showExtraData: false,
-                  onTap: () async {
-                    logFirebaseEvent(
-                        'DOOR_OPENING_Container_lmixdlhn_CALLBACK');
-                    logFirebaseEvent(
-                        'call_center_other_information_navigate_b');
-                    context.safePop();
-                  },
+                child: const NavBarWidget(
+                  page: 'no',
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

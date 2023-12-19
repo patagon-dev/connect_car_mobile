@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:signature/signature.dart';
 import 'test_model.dart';
 export 'test_model.dart';
 
@@ -26,7 +27,6 @@ class _TestWidgetState extends State<TestWidget> {
     _model = createModel(context, () => TestModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'test'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -89,11 +89,42 @@ class _TestWidgetState extends State<TestWidget> {
           centerTitle: true,
           elevation: 0.0,
         ),
-        body: const SafeArea(
+        body: SafeArea(
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              ClipRect(
+                child: Signature(
+                  controller: _model.signatureController ??=
+                      SignatureController(
+                    penStrokeWidth: 2.0,
+                    penColor: FlutterFlowTheme.of(context).primaryText,
+                    exportBackgroundColor: Colors.white,
+                  ),
+                  backgroundColor:
+                      FlutterFlowTheme.of(context).secondaryBackground,
+                  height: 120.0,
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('TEST_PAGE_Text_mkjodloc_ON_TAP');
+                  logFirebaseEvent('Text_update_page_state');
+                  setState(() {
+                    _model.aaa = 't';
+                  });
+                },
+                child: Text(
+                  'Hello World',
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+              ),
+            ],
           ),
         ),
       ),

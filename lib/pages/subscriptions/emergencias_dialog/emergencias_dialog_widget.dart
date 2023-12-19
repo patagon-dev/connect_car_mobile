@@ -1,3 +1,5 @@
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +10,12 @@ import 'emergencias_dialog_model.dart';
 export 'emergencias_dialog_model.dart';
 
 class EmergenciasDialogWidget extends StatefulWidget {
-  const EmergenciasDialogWidget({super.key});
+  const EmergenciasDialogWidget({
+    super.key,
+    this.addressModel,
+  });
+
+  final AddressModelStruct? addressModel;
 
   @override
   _EmergenciasDialogWidgetState createState() =>
@@ -28,8 +35,6 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EmergenciasDialogModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -44,7 +49,7 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(15.0, 12.0, 15.0, 12.0),
         child: Container(
@@ -100,7 +105,7 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.00, 0.00),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
@@ -188,9 +193,7 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
+                                            fontFamily: 'Plus Jakarta Sans',
                                             color: const Color(0xFF131353),
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
@@ -277,9 +280,7 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
+                                            fontFamily: 'Plus Jakarta Sans',
                                             color: const Color(0xFF131353),
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(

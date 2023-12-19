@@ -32,8 +32,6 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
 
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -83,7 +81,7 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 81.0, 0.0, 40.0),
@@ -357,8 +355,8 @@ class _LogInPageWidgetState extends State<LogInPageWidget> {
                                             ],
                                           ),
                                           Align(
-                                            alignment: const AlignmentDirectional(
-                                                1.00, 0.00),
+                                            alignment:
+                                                const AlignmentDirectional(1.0, 0.0),
                                             child: Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
