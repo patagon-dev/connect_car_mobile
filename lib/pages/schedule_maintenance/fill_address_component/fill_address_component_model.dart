@@ -23,8 +23,6 @@ class FillAddressComponentModel
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
-  // Stores action output result for [Custom Action - communiesList] action in fill_address_component widget.
-  List<CommunesModelStruct>? communesList;
   // State field(s) for Calle widget.
   FocusNode? calleFocusNode;
   TextEditingController? calleController;

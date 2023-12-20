@@ -147,7 +147,6 @@ final parametersBuilderMap =
   'ResetPage': ParameterData.none(),
   'ResetPasswordSuccess': ParameterData.none(),
   'car_crash_formCopy': ParameterData.none(),
-  'test': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

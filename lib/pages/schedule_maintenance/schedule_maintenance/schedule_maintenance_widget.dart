@@ -279,7 +279,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  'Mantención por kilometraje (10.000 kms)',
+                                                  'Mantención por kilometraje',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -456,7 +456,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                                               ),
                                                                         ),
                                                                         Text(
-                                                                          '${_model.addressModel?.comuna}',
+                                                                          functions.changecomuna(_model.addressModel!.comuna),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -524,6 +524,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                                             child:
                                                                                 FillAddressComponentWidget(
                                                                               addressModel: _model.addressModel,
+                                                                              comuna: functions.changecomuna(_model.addressModel!.comuna),
                                                                             ),
                                                                           ),
                                                                         );

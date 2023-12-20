@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,9 +19,11 @@ class FillAddressComponentWidget extends StatefulWidget {
   const FillAddressComponentWidget({
     super.key,
     this.addressModel,
+    required this.comuna,
   });
 
   final AddressModelStruct? addressModel;
+  final String? comuna;
 
   @override
   _FillAddressComponentWidgetState createState() =>
@@ -45,15 +48,16 @@ class _FillAddressComponentWidgetState
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('FILL_ADDRESS_COMPONENT_fill_address_comp');
-      logFirebaseEvent('fill_address_component_custom_action');
-      _model.communesList = await actions.communiesList(
-        widget.addressModel?.selectedRegion,
-        FFAppState().Regions.toList(),
-      );
       logFirebaseEvent('fill_address_component_update_component_');
       setState(() {
-        _model.communeList =
-            _model.communesList!.toList().cast<CommunesModelStruct>();
+        _model.communeList = functions
+            .returnListComuna(FFAppState()
+                .Regions
+                .where((e) => e.id == widget.addressModel?.selectedRegion)
+                .toList()
+                .first)
+            .toList()
+            .cast<CommunesModelStruct>();
       });
     });
 
@@ -429,8 +433,7 @@ class _FillAddressComponentWidgetState
                         child: FlutterFlowDropDown<String>(
                           controller: _model.dropDownValueController2 ??=
                               FormFieldController<String>(
-                            _model.dropDownValue2 ??=
-                                widget.addressModel?.comuna,
+                            _model.dropDownValue2 ??= widget.comuna,
                           ),
                           options:
                               _model.communeList.map((e) => e.name).toList(),
@@ -448,6 +451,7 @@ class _FillAddressComponentWidgetState
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
+                          hintText: 'Please select...',
                           icon: Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: FlutterFlowTheme.of(context).secondaryText,

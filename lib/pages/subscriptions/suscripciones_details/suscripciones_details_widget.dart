@@ -572,8 +572,7 @@ class _SuscripcionesDetailsWidgetState extends State<SuscripcionesDetailsWidget>
                                                   ParamType.String,
                                                 ),
                                                 'licensePlate': serializeParam(
-                                                  functions.sortLicencePlate(
-                                                      widget.licensePlate!),
+                                                  widget.licensePlate,
                                                   ParamType.String,
                                                 ),
                                                 'version': serializeParam(

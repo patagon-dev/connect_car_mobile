@@ -202,11 +202,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'car_crash_formCopy',
           path: '/carCrashFormCopy',
           builder: (context, params) => const CarCrashFormCopyWidget(),
-        ),
-        FFRoute(
-          name: 'test',
-          path: '/test',
-          builder: (context, params) => const TestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -190,3 +190,16 @@ String changeSucceeded(String status) {
     return status ?? "N/A";
   }
 }
+
+List<CommunesModelStruct> returnListComuna(RegionModelStruct region) {
+  return region.communes;
+}
+
+String changecomuna(String string) {
+  List<String> parts = string.split('-');
+
+  // Capitalize the first letter of each part and join them with a space
+  return parts
+      .map((part) => part[0].toUpperCase() + part.substring(1))
+      .join(' ');
+}

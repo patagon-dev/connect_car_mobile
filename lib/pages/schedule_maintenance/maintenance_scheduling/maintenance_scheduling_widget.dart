@@ -313,7 +313,7 @@ class _MaintenanceSchedulingWidgetState
                                                                   0.0,
                                                                   10.0),
                                                       child: Text(
-                                                        'Mantención por kilometraje (10.000 kms)',
+                                                        'Mantención por kilometraje',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

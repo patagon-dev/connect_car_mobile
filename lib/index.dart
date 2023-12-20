@@ -38,4 +38,3 @@ export '/web_part/log_in/reset_password_success/reset_password_success_widget.da
     show ResetPasswordSuccessWidget;
 export '/crash_form/car_crash_form_copy/car_crash_form_copy_widget.dart'
     show CarCrashFormCopyWidget;
-export '/pages/test/test_widget.dart' show TestWidget;
