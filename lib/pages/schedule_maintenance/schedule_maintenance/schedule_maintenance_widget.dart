@@ -845,7 +845,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                                 .showSnackBar(
                                                               SnackBar(
                                                                 content: Text(
-                                                                  'Something went wrong try again letter.',
+                                                                  'Ocurrió un error. Por favor reintentar.',
                                                                   style:
                                                                       TextStyle(
                                                                     fontFamily:
@@ -913,7 +913,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                               .showSnackBar(
                                                             SnackBar(
                                                               content: Text(
-                                                                'Success to schedule request.',
+                                                                'Su solicitud ha sido ingresada correctamente.',
                                                                 style:
                                                                     TextStyle(
                                                                   fontFamily:
@@ -955,7 +955,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                               .showSnackBar(
                                                             SnackBar(
                                                               content: Text(
-                                                                'Somthing went wrong.',
+                                                                'Ocurrió un error inesperado.',
                                                                 style:
                                                                     TextStyle(
                                                                   fontFamily:
@@ -983,7 +983,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                             .showSnackBar(
                                                           SnackBar(
                                                             content: Text(
-                                                              'Please select Scheduled date.',
+                                                              'Debe seleccionar una fecha.',
                                                               style: TextStyle(
                                                                 fontFamily:
                                                                     'Plus Jakarta Sans',
