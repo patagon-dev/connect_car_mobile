@@ -107,7 +107,6 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
-  'car_crash_form_NOT_ACTUAL': ParameterData.none(),
   'profile_page': ParameterData.none(),
   'login': ParameterData.none(),
   'reset_password': ParameterData.none(),

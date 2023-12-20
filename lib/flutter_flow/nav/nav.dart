@@ -83,11 +83,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? const SuscripcionesWidget() : const LoginWidget(),
         ),
         FFRoute(
-          name: 'car_crash_form_NOT_ACTUAL',
-          path: '/carCrashFormNOTACTUAL',
-          builder: (context, params) => const CarCrashFormNOTACTUALWidget(),
-        ),
-        FFRoute(
           name: 'profile_page',
           path: '/profile_page',
           builder: (context, params) => const ProfilePageWidget(),
