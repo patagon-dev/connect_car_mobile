@@ -989,85 +989,66 @@ class _SuscripcionesDetailsWidgetState extends State<SuscripcionesDetailsWidget>
                                             ],
                                           ),
                                         ),
-                                        InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            logFirebaseEvent(
-                                                'SUSCRIPCIONES_DETAILS_Container_guhev7w9');
-                                            logFirebaseEvent(
-                                                'Container_navigate_to');
-
-                                            context.pushNamed(
-                                                'car_crash_formCopy');
-                                          },
-                                          child: Container(
-                                            width: 97.0,
-                                            height: 76.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              border: Border.all(
-                                                color: const Color(0xFFE1E1E1),
-                                              ),
+                                        Container(
+                                          width: 97.0,
+                                          height: 76.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            border: Border.all(
+                                              color: const Color(0xFFE1E1E1),
                                             ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                  child: Image.network(
-                                                    valueOrDefault<String>(
-                                                      suscripcionesDetailsSuscripcionesServicesRecord.viajealExtranjero
-                                                          ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/connect-car-v1-2i59cm/assets/nwehakf7sxge/service_6_enable.png'
-                                                          : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/connect-car-v1-2i59cm/assets/v57w75l5k31m/service_6_disable.png',
-                                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/connect-car-v1-2i59cm/assets/v57w75l5k31m/service_6_disable.png',
-                                                    ),
-                                                    width: 27.0,
-                                                    height: 26.0,
-                                                    fit: BoxFit.contain,
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
+                                                    suscripcionesDetailsSuscripcionesServicesRecord.viajealExtranjero
+                                                        ? 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/connect-car-v1-2i59cm/assets/nwehakf7sxge/service_6_enable.png'
+                                                        : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/connect-car-v1-2i59cm/assets/v57w75l5k31m/service_6_disable.png',
+                                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/connect-car-v1-2i59cm/assets/v57w75l5k31m/service_6_disable.png',
                                                   ),
+                                                  width: 27.0,
+                                                  height: 26.0,
+                                                  fit: BoxFit.contain,
                                                 ),
-                                                Text(
-                                                  'Viaje al\nextranjero',
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: valueOrDefault<
-                                                            Color>(
-                                                          suscripcionesDetailsSuscripcionesServicesRecord.viajealExtranjero
-                                                              ? const Color(
-                                                                  0xFF131353)
-                                                              : const Color(
-                                                                  0xFF979797),
-                                                          const Color(0xFF1E1515),
-                                                        ),
-                                                        fontSize: 11.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
+                                              ),
+                                              Text(
+                                                'Viaje al\nextranjero',
+                                                textAlign: TextAlign.center,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          'Plus Jakarta Sans',
+                                                      color:
+                                                          valueOrDefault<Color>(
+                                                        suscripcionesDetailsSuscripcionesServicesRecord.viajealExtranjero
+                                                            ? const Color(0xFF131353)
+                                                            : const Color(0xFF979797),
+                                                        const Color(0xFF1E1515),
                                                       ),
-                                                ),
-                                              ],
-                                            ),
+                                                      fontSize: 11.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      useGoogleFonts: GoogleFonts
+                                                              .asMap()
+                                                          .containsKey(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily),
+                                                    ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
@@ -1684,16 +1665,19 @@ class _SuscripcionesDetailsWidgetState extends State<SuscripcionesDetailsWidget>
                                                                                     ),
                                                                               ),
                                                                             ),
-                                                                            Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                              child: Text(
-                                                                                'Estado del pago',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 11.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                    ),
+                                                                            Align(
+                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                child: Text(
+                                                                                  'Estado del pago',
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: 11.0,
+                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      ),
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           ],

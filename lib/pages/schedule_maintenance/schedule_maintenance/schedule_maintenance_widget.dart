@@ -456,7 +456,7 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                                               ),
                                                                         ),
                                                                         Text(
-                                                                          '${_model.addressModel?.comuna}, ${_model.addressModel?.ciudad}',
+                                                                          '${_model.addressModel?.comuna}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(

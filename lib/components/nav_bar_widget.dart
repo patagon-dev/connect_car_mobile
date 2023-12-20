@@ -63,7 +63,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 36.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 48.0, 0.0),
               child: Container(
                 decoration: const BoxDecoration(),
                 child: InkWell(
@@ -113,7 +113,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(36.0, 0.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(48.0, 0.0, 0.0, 0.0),
               child: Container(
                 decoration: const BoxDecoration(),
                 child: InkWell(
