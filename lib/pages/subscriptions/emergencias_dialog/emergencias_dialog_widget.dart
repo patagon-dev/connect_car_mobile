@@ -146,7 +146,7 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
                     ),
                     Padding(
                       padding: const EdgeInsetsDirectional.fromSTEB(
-                          20.0, 15.0, 30.0, 15.0),
+                          15.0, 15.0, 15.0, 15.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -211,14 +211,14 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'En caso de que hayas sufrido un choque leve o grave.',
-                                  maxLines: 2,
+                                  maxLines: 3,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         color: const Color(0xFF131353),
                                         fontSize: 14.0,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.normal,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
@@ -233,7 +233,7 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
                     ),
                     Padding(
                       padding: const EdgeInsetsDirectional.fromSTEB(
-                          20.0, 15.0, 30.0, 40.0),
+                          15.0, 15.0, 15.0, 40.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -298,13 +298,13 @@ class _EmergenciasDialogWidgetState extends State<EmergenciasDialogWidget> {
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'En caso de robo del vehículo en su totalidad.',
-                                  maxLines: 2,
+                                  maxLines: 3,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
                                         color: const Color(0xFF131353),
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.normal,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
