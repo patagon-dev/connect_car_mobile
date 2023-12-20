@@ -185,7 +185,7 @@ String changeToCamelCase(String month) {
 
 String changeSucceeded(String status) {
   try {
-    return status.toLowerCase() == "succeeded" ? "suceder a" : status;
+    return status.toLowerCase() == "succeeded" ? "Pagado" : status;
   } catch (e) {
     return status ?? "N/A";
   }

@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -76,8 +77,10 @@ class _CarDescriptionWidgetState extends State<CarDescriptionWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 0.0, 5.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(
-                      functions.setImage(widget.image),
+                    child: CachedNetworkImage(
+                      fadeInDuration: const Duration(milliseconds: 500),
+                      fadeOutDuration: const Duration(milliseconds: 500),
+                      imageUrl: functions.setImage(widget.image),
                       width: 200.0,
                       height: 100.0,
                       fit: BoxFit.cover,
