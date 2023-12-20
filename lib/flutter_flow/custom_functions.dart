@@ -171,3 +171,22 @@ bool rutValidation(String rut) {
   print("Test:-----> $rut ${checkDigit == calculatedCheckDigit}");
   return checkDigit == calculatedCheckDigit;
 }
+
+String changeToCamelCase(String month) {
+  try {
+    if (month != "null" || month != "N/A") {
+      return "${month[0].toUpperCase()}${month.substring(1, month.length)}";
+    }
+    return 'N/A';
+  } catch (e) {
+    return "N/A";
+  }
+}
+
+String changeSucceeded(String status) {
+  try {
+    return status.toLowerCase() == "succeeded" ? "suceder a" : status;
+  } catch (e) {
+    return status ?? "N/A";
+  }
+}
