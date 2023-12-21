@@ -3,7 +3,7 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/subscriptions/car_description/car_description_widget.dart';
+import '/pages/car_description/car_description_widget.dart';
 import 'schedule_maintenance_widget.dart' show ScheduleMaintenanceWidget;
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/subscriptions/car_description/car_description_widget.dart';
+import '/pages/car_description/car_description_widget.dart';
 import 'suscripciones_widget.dart' show SuscripcionesWidget;
 import 'package:flutter/material.dart';
 

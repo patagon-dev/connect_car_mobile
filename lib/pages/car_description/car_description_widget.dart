@@ -4,6 +4,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'car_description_model.dart';
@@ -77,10 +78,13 @@ class _CarDescriptionWidgetState extends State<CarDescriptionWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 0.0, 5.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
-                    child: CachedNetworkImage(
-                      fadeInDuration: const Duration(milliseconds: 500),
-                      fadeOutDuration: const Duration(milliseconds: 500),
-                      imageUrl: functions.setImage(widget.image),
+                    child: OctoImage(
+                      placeholderBuilder: OctoPlaceholder.blurHash(
+                        'LsPi-fof?vR*.8t7M{Rj?^RjMxt7',
+                      ),
+                      image: CachedNetworkImageProvider(
+                        functions.setImage(widget.image),
+                      ),
                       width: 200.0,
                       height: 100.0,
                       fit: BoxFit.cover,

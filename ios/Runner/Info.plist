@@ -56,11 +56,11 @@
 	<key>NSCameraUsageDescription</key>
     <string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order for the APP to work properly, for some forms you might need to upload pictures. </string>
+    <string>Se requiere acceso a la galería de fotos para subir imágenes en algunos casos.</string>
 	<key>NSCalendarsUsageDescription</key>
-    <string>The APP requieres access to your calendar for scheduling services.</string>
+    <string>Se requiere acceso al calendario para el correcto agendamiento de los servicios.</string>
 	<key>PermissionGroupNotification</key>
-    <string>need notification permission</string>
+    <string>Se requiere el servicio de notificaciones para alertar sobre eventuales requerimientos de mantención</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>

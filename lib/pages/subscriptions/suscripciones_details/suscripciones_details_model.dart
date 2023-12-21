@@ -1,6 +1,6 @@
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/subscriptions/car_description/car_description_widget.dart';
+import '/pages/car_description/car_description_widget.dart';
 import '/pages/subscriptions/payment_history_component/payment_history_component_widget.dart';
 import 'suscripciones_details_widget.dart' show SuscripcionesDetailsWidget;
 import 'package:flutter/material.dart';
