@@ -673,7 +673,7 @@ class CarCrashFormCopyModel extends FlutterFlowModel<CarCrashFormCopyWidget> {
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
-  // Stores action output result for [Backend Call - API (create zamad user)] action in Button widget.
+  // Stores action output result for [Backend Call - API (createZamadUser)] action in Button widget.
   ApiCallResponse? createUserResponse;
   // Stores action output result for [Custom Action - checkUserExistInZamad] action in Button widget.
   bool? checkUserIsExist;

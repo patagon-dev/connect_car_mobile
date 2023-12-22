@@ -30,7 +30,7 @@ class ScheduleMaintenanceModel
   late CarDescriptionModel carDescriptionModel;
   // Stores action output result for [Bottom Sheet - fill_address_component] action in Text widget.
   AddressModelStruct? addressResult;
-  // Stores action output result for [Backend Call - API (create zamad user)] action in Button widget.
+  // Stores action output result for [Backend Call - API (createZamadUser)] action in Button widget.
   ApiCallResponse? createUserResponse;
   // Stores action output result for [Custom Action - checkUserExistInZamad] action in Button widget.
   bool? checkUserIsExist;

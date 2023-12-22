@@ -3,7 +3,6 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/roadside_assistance/custom_button/custom_button_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -597,10 +596,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                     onTap: () async {
                                                       logFirebaseEvent(
                                                           'PROFILE_Container_frnaitm0_CALLBACK');
-                                                      logFirebaseEvent(
-                                                          'custom_button_custom_action');
-                                                      await actions
-                                                          .unsubscribeTopic();
                                                       logFirebaseEvent(
                                                           'custom_button_update_app_state');
                                                       FFAppState().update(() {

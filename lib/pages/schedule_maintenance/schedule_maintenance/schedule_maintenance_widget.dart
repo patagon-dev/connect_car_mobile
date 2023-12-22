@@ -809,8 +809,6 @@ class _ScheduleMaintenanceWidgetState extends State<ScheduleMaintenanceWidget> {
                                                           userEmail: FFAppState()
                                                               .emailPersistent,
                                                           roles: 'Customer',
-                                                          authorizationToken:
-                                                              'Token MfaSE3CHlbT58A3czVPM7E8mn3UhNlcxfTQ6OMcvixnLAdhnWO2rXooPOq0n7UqJ',
                                                         );
                                                         shouldSetState = true;
                                                         if (!(CarCrashGroup

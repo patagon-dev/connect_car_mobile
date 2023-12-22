@@ -60,8 +60,9 @@ class AddressModelStruct extends FFFirebaseStruct {
         selectedRegion: data['selectedRegion'] as String?,
       );
 
-  static AddressModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? AddressModelStruct.fromMap(data) : null;
+  static AddressModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? AddressModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'Calle': _calle,

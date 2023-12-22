@@ -41,6 +41,12 @@ class FFAppState extends ChangeNotifier {
       _emailPersistent =
           prefs.getString('ff_emailPersistent') ?? _emailPersistent;
     });
+    _safeInit(() {
+      _passPersistent = prefs.getString('ff_passPersistent') ?? _passPersistent;
+    });
+    _safeInit(() {
+      _rememberCreds = prefs.getBool('ff_rememberCreds') ?? _rememberCreds;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -267,6 +273,20 @@ class FFAppState extends ChangeNotifier {
   set emailPersistent(String value) {
     _emailPersistent = value;
     prefs.setString('ff_emailPersistent', value);
+  }
+
+  String _passPersistent = '';
+  String get passPersistent => _passPersistent;
+  set passPersistent(String value) {
+    _passPersistent = value;
+    prefs.setString('ff_passPersistent', value);
+  }
+
+  bool _rememberCreds = false;
+  bool get rememberCreds => _rememberCreds;
+  set rememberCreds(bool value) {
+    _rememberCreds = value;
+    prefs.setBool('ff_rememberCreds', value);
   }
 }
 

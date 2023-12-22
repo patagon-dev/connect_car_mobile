@@ -46,124 +46,127 @@ class _NavBarWidgetState extends State<NavBarWidget> {
 
     return Container(
       width: double.infinity,
-      height: 60.0,
+      height: 80.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
+        boxShadow: const [
+          BoxShadow(
+            blurRadius: 10.0,
+            color: Color(0x41D8D8D8),
+            offset: Offset(0.0, -4.0),
+            spreadRadius: 0.0,
+          )
+        ],
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
-          topLeft: Radius.circular(12.0),
-          topRight: Radius.circular(12.0),
+          topLeft: Radius.circular(0.0),
+          topRight: Radius.circular(0.0),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 48.0, 0.0),
-              child: Container(
-                decoration: const BoxDecoration(),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    logFirebaseEvent('NAV_BAR_COMP_Column_f2qvmpeh_ON_TAP');
-                    logFirebaseEvent('Column_navigate_to');
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 35.0, 0.0),
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('NAV_BAR_COMP_Column_f2qvmpeh_ON_TAP');
+                  logFirebaseEvent('Column_navigate_to');
 
-                    context.pushNamed('suscripciones');
-                  },
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Icon(
-                        FFIcons.kcar,
-                        color: widget.page == 'sub'
-                            ? const Color(0xFF3330E8)
-                            : const Color(0xFF939393),
-                        size: 20.0,
+                  context.pushNamed('suscripciones');
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      FFIcons.kcar,
+                      color: widget.page == 'sub'
+                          ? const Color(0xFF3330E8)
+                          : const Color(0xFF939393),
+                      size: 22.0,
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                      child: Text(
+                        'Mis suscripciones',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              color: widget.page == 'sub'
+                                  ? const Color(0xFF3330E8)
+                                  : const Color(0xFF939393),
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w500,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
+                            ),
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
-                        child: Text(
-                          'Mis suscripciones',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Plus Jakarta Sans',
-                                color: widget.page == 'sub'
-                                    ? const Color(0xFF3330E8)
-                                    : const Color(0xFF939393),
-                                fontSize: 12.0,
-                                fontWeight: FontWeight.w500,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
-                              ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(48.0, 0.0, 0.0, 0.0),
-              child: Container(
-                decoration: const BoxDecoration(),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    logFirebaseEvent('NAV_BAR_COMP_Column_5frdg912_ON_TAP');
-                    logFirebaseEvent('Column_navigate_to');
+          ),
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 0.0, 0.0),
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('NAV_BAR_COMP_Column_5frdg912_ON_TAP');
+                  logFirebaseEvent('Column_navigate_to');
 
-                    context.pushNamed('profile_page');
-                  },
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Icon(
-                        FFIcons.kprofile,
-                        color: widget.page == 'profil'
-                            ? const Color(0xFF3330E8)
-                            : const Color(0xFF939393),
-                        size: 20.0,
+                  context.pushNamed('profile_page');
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      FFIcons.kprofile,
+                      color: widget.page == 'profil'
+                          ? const Color(0xFF3330E8)
+                          : const Color(0xFF939393),
+                      size: 22.0,
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                      child: Text(
+                        'Mi perfil',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              color: widget.page == 'profil'
+                                  ? const Color(0xFF3330E8)
+                                  : const Color(0xFF939393),
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w500,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
+                            ),
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
-                        child: Text(
-                          'Mi perfil',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Plus Jakarta Sans',
-                                color: widget.page == 'profil'
-                                    ? const Color(0xFF3330E8)
-                                    : const Color(0xFF939393),
-                                fontSize: 12.0,
-                                fontWeight: FontWeight.w500,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
-                              ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

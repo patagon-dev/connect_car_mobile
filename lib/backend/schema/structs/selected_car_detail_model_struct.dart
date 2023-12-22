@@ -69,10 +69,9 @@ class SelectedCarDetailModelStruct extends FFFirebaseStruct {
         year: data['year'] as String?,
       );
 
-  static SelectedCarDetailModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? SelectedCarDetailModelStruct.fromMap(data)
-          : null;
+  static SelectedCarDetailModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? SelectedCarDetailModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'brand': _brand,

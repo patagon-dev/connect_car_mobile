@@ -148,203 +148,218 @@ class RaiseTicketOfCarCrashCall {
     );
   }
 
-  dynamic error(dynamic response) => getJsonField(
+  String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
-      );
-  dynamic id(dynamic response) => getJsonField(
+      ));
+  int? id(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.id''',
-      );
-  dynamic groupID(dynamic response) => getJsonField(
+      ));
+  int? groupID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.group_id''',
-      );
-  dynamic priorityID(dynamic response) => getJsonField(
+      ));
+  int? priorityID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.priority_id''',
-      );
-  dynamic stateID(dynamic response) => getJsonField(
+      ));
+  int? stateID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.state_id''',
-      );
-  dynamic number(dynamic response) => getJsonField(
+      ));
+  String? number(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.number''',
-      );
-  dynamic title(dynamic response) => getJsonField(
+      ));
+  String? title(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.title''',
-      );
-  dynamic ownerID(dynamic response) => getJsonField(
+      ));
+  int? ownerID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.owner_id''',
-      );
-  dynamic customerID(dynamic response) => getJsonField(
+      ));
+  int? customerID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.customer_id''',
-      );
-  dynamic lastContactAt(dynamic response) => getJsonField(
+      ));
+  String? lastContactAt(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.last_contact_at''',
-      );
-  dynamic lastContactCustomerAt(dynamic response) => getJsonField(
+      ));
+  String? lastContactCustomerAt(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.last_contact_customer_at''',
-      );
-  dynamic createArticleTypeId(dynamic response) => getJsonField(
+      ));
+  int? createArticleTypeId(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.create_article_type_id''',
-      );
-  dynamic createArticleSenderID(dynamic response) => getJsonField(
+      ));
+  int? createArticleSenderID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.create_article_sender_id''',
-      );
-  dynamic articleCount(dynamic response) => getJsonField(
+      ));
+  int? articleCount(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.article_count''',
-      );
+      ));
   dynamic preferences(dynamic response) => getJsonField(
         response,
         r'''$.preferences''',
       );
-  dynamic updatedById(dynamic response) => getJsonField(
+  int? updatedById(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.updated_by_id''',
-      );
-  dynamic createdById(dynamic response) => getJsonField(
+      ));
+  int? createdById(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.created_by_id''',
-      );
-  dynamic createdAt(dynamic response) => getJsonField(
+      ));
+  String? createdAt(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.created_at''',
-      );
-  dynamic updatedAt(dynamic response) => getJsonField(
+      ));
+  String? updatedAt(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.updated_at''',
-      );
-  dynamic eventType(dynamic response) => getJsonField(
+      ));
+  String? eventType(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.event_type''',
-      );
-  dynamic nombreDeLaPersonaQueIbaConduciendo(dynamic response) => getJsonField(
+      ));
+  String? nombreDeLaPersonaQueIbaConduciendo(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.nombre_de_la_persona_que_iba_conduciendo''',
-      );
-  dynamic rutOOasaporteDeLaPersonaQueIbaConduciendo(dynamic response) =>
-      getJsonField(
+      ));
+  String? rutOOasaporteDeLaPersonaQueIbaConduciendo(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.rut_o_pasaporte_de_la_persona_que_iba_conduciendo''',
-      );
-  dynamic nacionalidad(dynamic response) => getJsonField(
+      ));
+  String? nacionalidad(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.nacionalidad''',
-      );
-  dynamic direccionDeLaPersonaQueIbaConduciendo(dynamic response) =>
-      getJsonField(
+      ));
+  String? direccionDeLaPersonaQueIbaConduciendo(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.direccion_de_la_persona_que_iba_conduciendo''',
-      );
-  dynamic comunaDeLaPersonaQueIbaConduciendo(dynamic response) => getJsonField(
+      ));
+  String? comunaDeLaPersonaQueIbaConduciendo(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.comuna_de_la_persona_que_iba_conduciendo''',
-      );
-  dynamic ciudadDeLaPersonaQueIbaConduciendo(dynamic response) => getJsonField(
+      ));
+  String? ciudadDeLaPersonaQueIbaConduciendo(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.ciudad_de_la_persona_que_iba_conduciendo''',
-      );
-  dynamic marcaVehiculo(dynamic response) => getJsonField(
+      ));
+  String? marcaVehiculo(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.marca_vehiculo''',
-      );
-  dynamic modeloVehiculo(dynamic response) => getJsonField(
+      ));
+  String? modeloVehiculo(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.modelo_vehiculo''',
-      );
-  dynamic anoVehiculo(dynamic response) => getJsonField(
+      ));
+  int? anoVehiculo(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.ano_vehiculo''',
-      );
-  dynamic patenteVehiculo(dynamic response) => getJsonField(
+      ));
+  String? patenteVehiculo(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.patente_vehiculo''',
-      );
-  dynamic horaEnQueOcurrioElIncidente(dynamic response) => getJsonField(
+      ));
+  String? horaEnQueOcurrioElIncidente(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.hora_en_que_ocurrio_el_incidente''',
-      );
-  dynamic calleEnDondeOcurrioElIncidente(dynamic response) => getJsonField(
+      ));
+  String? calleEnDondeOcurrioElIncidente(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.calle_en_donde_ocurrio_el_incidente''',
-      );
-  dynamic comunaEnDondeOcurrioElIncidente(dynamic response) => getJsonField(
+      ));
+  String? comunaEnDondeOcurrioElIncidente(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.comuna_en_donde_ocurrio_el_incidente''',
-      );
-  dynamic ciudadEnDondeOcurrioElIncidente(dynamic response) => getJsonField(
+      ));
+  String? ciudadEnDondeOcurrioElIncidente(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.ciudad_en_donde_ocurrio_el_incidente''',
-      );
-  dynamic velocidadAlMomentoDelSiniestroEnKm(dynamic response) => getJsonField(
+      ));
+  int? velocidadAlMomentoDelSiniestroEnKm(dynamic response) =>
+      castToType<int>(getJsonField(
         response,
         r'''$.velocidad_al_momento_del_siniestro_en_km''',
-      );
-  dynamic elSiniestroSeProdujoPorAccion(dynamic response) => getJsonField(
+      ));
+  String? elSiniestroSeProdujoPorAccion(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.el_siniestro_se_produjo_por_accion''',
-      );
-  dynamic relatoDeLosHechos(dynamic response) => getJsonField(
+      ));
+  String? relatoDeLosHechos(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.relato_de_los_hechos''',
-      );
-  dynamic danos(dynamic response) => getJsonField(
+      ));
+  String? danos(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.danos''',
-      );
-  dynamic tercerosRut(dynamic response) => getJsonField(
+      ));
+  String? tercerosRut(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.terceros_rut''',
-      );
-  dynamic tercerosTelefono(dynamic response) => getJsonField(
+      ));
+  String? tercerosTelefono(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.terceros_telefono''',
-      );
-  dynamic tercerosDomicilio(dynamic response) => getJsonField(
+      ));
+  String? tercerosDomicilio(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.terceros_domicilio''',
-      );
-  dynamic tercerosMarca(dynamic response) => getJsonField(
+      ));
+  String? tercerosMarca(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.terceros_marca''',
-      );
-  dynamic tercerosModelo(dynamic response) => getJsonField(
+      ));
+  String? tercerosModelo(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.terceros_modelo''',
-      );
-  dynamic tercerosAno(dynamic response) => getJsonField(
+      ));
+  int? tercerosAno(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.terceros_ano''',
-      );
-  dynamic tercerosCulpable(dynamic response) => getJsonField(
+      ));
+  String? tercerosCulpable(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.terceros_culpable''',
-      );
-  dynamic carabinerosJuzgado(dynamic response) => getJsonField(
+      ));
+  String? carabinerosJuzgado(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.carabineros_juzgado''',
-      );
-  dynamic declaracionRut(dynamic response) => getJsonField(
+      ));
+  String? declaracionRut(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.declaracion_rut''',
-      );
+      ));
   List<int>? articleIds(dynamic response) => (getJsonField(
         response,
         r'''$.article_ids''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? ticketTimeAccountingIds(dynamic response) => getJsonField(
         response,
         r'''$.ticket_time_accounting_ids''',
@@ -389,85 +404,88 @@ class ScheduleRequestInZamadCall {
     );
   }
 
-  dynamic ticketID(dynamic response) => getJsonField(
+  int? ticketID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.id''',
-      );
-  dynamic groupID(dynamic response) => getJsonField(
+      ));
+  int? groupID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.group_id''',
-      );
-  dynamic priorityID(dynamic response) => getJsonField(
+      ));
+  int? priorityID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.priority_id''',
-      );
-  dynamic stateID(dynamic response) => getJsonField(
+      ));
+  int? stateID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.state_id''',
-      );
-  dynamic number(dynamic response) => getJsonField(
+      ));
+  String? number(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.number''',
-      );
-  dynamic title(dynamic response) => getJsonField(
+      ));
+  String? title(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.title''',
-      );
-  dynamic ownerID(dynamic response) => getJsonField(
+      ));
+  int? ownerID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.owner_id''',
-      );
-  dynamic customerID(dynamic response) => getJsonField(
+      ));
+  int? customerID(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.customer_id''',
-      );
-  dynamic lastContactAt(dynamic response) => getJsonField(
+      ));
+  String? lastContactAt(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.last_contact_at''',
-      );
-  dynamic lastContactCustomerAt(dynamic response) => getJsonField(
+      ));
+  String? lastContactCustomerAt(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.last_contact_customer_at''',
-      );
-  dynamic createArticleTypeId(dynamic response) => getJsonField(
+      ));
+  int? createArticleTypeId(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.create_article_type_id''',
-      );
-  dynamic createArticleSenderId(dynamic response) => getJsonField(
+      ));
+  int? createArticleSenderId(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.create_article_sender_id''',
-      );
-  dynamic articleCount(dynamic response) => getJsonField(
+      ));
+  int? articleCount(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.article_count''',
-      );
+      ));
   dynamic preferences(dynamic response) => getJsonField(
         response,
         r'''$.preferences''',
       );
-  dynamic updatedById(dynamic response) => getJsonField(
+  int? updatedById(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.updated_by_id''',
-      );
-  dynamic createdById(dynamic response) => getJsonField(
+      ));
+  int? createdById(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.created_by_id''',
-      );
-  dynamic createdAt(dynamic response) => getJsonField(
+      ));
+  String? createdAt(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.created_at''',
-      );
-  dynamic updatedAt(dynamic response) => getJsonField(
+      ));
+  String? updatedAt(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.updated_at''',
-      );
+      ));
   List<int>? articleIds(dynamic response) => (getJsonField(
         response,
         r'''$.article_ids''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<int>();
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? ticketTimeAccountingIds(dynamic response) => getJsonField(
         response,
         r'''$.ticket_time_accounting_ids''',
@@ -499,11 +517,12 @@ class CreateZamadUserCall {
   ]
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'create zamad user',
+      callName: 'createZamadUser',
       apiUrl: '${CarCrashGroup.baseUrl}users',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': '$authorizationToken',
+        'Authorization':
+            'Token MfaSE3CHlbT58A3czVPM7E8mn3UhNlcxfTQ6OMcvixnLAdhnWO2rXooPOq0n7UqJ',
       },
       params: {},
       body: ffApiRequestBody,
@@ -597,14 +616,14 @@ class CreateZamadUserCall {
         response,
         r'''$.group_ids''',
       );
-  dynamic error(dynamic response) => getJsonField(
+  String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
-      );
-  dynamic errorHuman(dynamic response) => getJsonField(
+      ));
+  String? errorHuman(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error_human''',
-      );
+      ));
 }
 
 /// End car crash Group Code
@@ -643,10 +662,10 @@ class GetUserBasicDataCall {
     );
   }
 
-  dynamic error(dynamic response) => getJsonField(
+  String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
-      );
+      ));
   dynamic data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
@@ -780,10 +799,10 @@ class PaymentHistoryDetailsCall {
     );
   }
 
-  dynamic time(dynamic response) => getJsonField(
+  double? time(dynamic response) => castToType<double>(getJsonField(
         response,
         r'''$.data[:].transactionTime''',
-      );
+      ));
 }
 
 /// End connect car api Group Code
@@ -817,34 +836,35 @@ class UserLoginCall {
     );
   }
 
-  static dynamic userid(dynamic response) => getJsonField(
+  static String? userid(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.id''',
-      );
-  static dynamic token(dynamic response) => getJsonField(
+      ));
+  static String? token(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.token''',
-      );
-  static dynamic expiration(dynamic response) => getJsonField(
+      ));
+  static int? expiration(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data.expiration''',
-      );
-  static dynamic userId(dynamic response) => getJsonField(
+      ));
+  static String? userId(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.userId''',
-      );
+      ));
   static dynamic data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
       );
-  static dynamic refreshToken(dynamic response) => getJsonField(
+  static String? refreshToken(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.data.refreshToken''',
-      );
-  static dynamic error(dynamic response) => getJsonField(
+      ));
+  static String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
-      );
+      ));
 }
 
 class UserCredentialsResetCall {
@@ -903,50 +923,51 @@ class UserSuspcriptionsCall {
     );
   }
 
-  static dynamic id(dynamic response) => getJsonField(
+  static String? id(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data[:].id''',
-      );
-  static dynamic status(dynamic response) => getJsonField(
+      ));
+  static String? status(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data[:].status''',
-      );
-  static dynamic startTimeStamp(dynamic response) => getJsonField(
+      ));
+  static int? startTimeStamp(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data[:].startTimestamp''',
-      );
-  static dynamic createdAt(dynamic response) => getJsonField(
+      ));
+  static int? createdAt(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data[:].createdAt''',
-      );
-  static dynamic userId(dynamic response) => getJsonField(
+      ));
+  static String? userId(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data[:].userId''',
-      );
-  static dynamic currency(dynamic response) => getJsonField(
+      ));
+  static String? currency(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data[:].currency''',
-      );
-  static dynamic periodPrice(dynamic response) => getJsonField(
+      ));
+  static int? periodPrice(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data[:].periodPrice''',
-      );
-  static dynamic periodAmount(dynamic response) => getJsonField(
+      ));
+  static int? periodAmount(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data[:].periodsAmount''',
-      );
-  static dynamic periodType(dynamic response) => getJsonField(
+      ));
+  static String? periodType(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.data[:].periodType''',
-      );
-  static dynamic vehicleId(dynamic response) => getJsonField(
+      ));
+  static String? vehicleId(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data[:].vehicleId''',
-      );
-  static dynamic updateedAt(dynamic response) => getJsonField(
+      ));
+  static int? updateedAt(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data[:].updatedAt''',
-      );
+      ));
   static dynamic error(dynamic response) => getJsonField(
         response,
         r'''$.error''',
@@ -979,30 +1000,30 @@ class UserProfileCall {
         response,
         r'''$.data''',
       );
-  static dynamic id(dynamic response) => getJsonField(
+  static String? id(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.id''',
-      );
-  static dynamic firstName(dynamic response) => getJsonField(
+      ));
+  static String? firstName(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.firstname''',
-      );
-  static dynamic lastName(dynamic response) => getJsonField(
+      ));
+  static String? lastName(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.lastname''',
-      );
-  static dynamic email(dynamic response) => getJsonField(
+      ));
+  static String? email(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.email''',
-      );
-  static dynamic updatesAt(dynamic response) => getJsonField(
+      ));
+  static int? updatesAt(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data.updatedAt''',
-      );
-  static dynamic createdAt(dynamic response) => getJsonField(
+      ));
+  static int? createdAt(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data.createdAt''',
-      );
+      ));
   static dynamic group(dynamic response) => getJsonField(
         response,
         r'''$.data.group''',
@@ -1011,10 +1032,10 @@ class UserProfileCall {
         response,
         r'''$.data.organizationId''',
       );
-  static dynamic error(dynamic response) => getJsonField(
+  static String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
-      );
+      ));
 }
 
 class SubscriptionsVehicleCall {
@@ -1045,34 +1066,34 @@ class SubscriptionsVehicleCall {
         response,
         r'''$.data''',
       );
-  static dynamic id(dynamic response) => getJsonField(
+  static String? id(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.id''',
-      );
-  static dynamic brans(dynamic response) => getJsonField(
+      ));
+  static String? brans(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.brand''',
-      );
-  static dynamic model(dynamic response) => getJsonField(
+      ));
+  static String? model(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.model''',
-      );
-  static dynamic version(dynamic response) => getJsonField(
+      ));
+  static String? version(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.version''',
-      );
-  static dynamic year(dynamic response) => getJsonField(
+      ));
+  static int? year(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data.year''',
-      );
-  static dynamic category(dynamic response) => getJsonField(
+      ));
+  static String? category(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.category''',
-      );
-  static dynamic error(dynamic response) => getJsonField(
+      ));
+  static String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
-      );
+      ));
 }
 
 class UserVehicleImageCall {
@@ -1105,7 +1126,9 @@ class UserVehicleImageCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   static List? data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
@@ -1153,18 +1176,20 @@ class RefreshTokenCall {
         response,
         r'''$.data''',
       );
-  static dynamic accessToken(dynamic response) => getJsonField(
+  static String? accessToken(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.data.accessToken''',
-      );
-  static dynamic expiration(dynamic response) => getJsonField(
+      ));
+  static int? expiration(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data.expiration''',
-      );
-  static dynamic refreshToken(dynamic response) => getJsonField(
+      ));
+  static String? refreshToken(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.data.refreshToken''',
-      );
+      ));
   static dynamic error(dynamic response) => getJsonField(
         response,
         r'''$.error''',
@@ -1242,10 +1267,10 @@ class PaymentHistoryCall {
     );
   }
 
-  static dynamic error(dynamic response) => getJsonField(
+  static String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
-      );
+      ));
   static List? paymentHistoryList(dynamic response) => getJsonField(
         response,
         r'''$.data''',

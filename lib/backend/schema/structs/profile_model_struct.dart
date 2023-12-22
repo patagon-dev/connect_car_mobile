@@ -24,8 +24,9 @@ class ProfileModelStruct extends FFFirebaseStruct {
         firstname: data['firstname'] as String?,
       );
 
-  static ProfileModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? ProfileModelStruct.fromMap(data) : null;
+  static ProfileModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? ProfileModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'firstname': _firstname,

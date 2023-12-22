@@ -350,8 +350,13 @@ class _FillAddressComponentWidgetState
                         child: FlutterFlowDropDown<String>(
                           controller: _model.dropDownValueController1 ??=
                               FormFieldController<String>(
-                            _model.dropDownValue1 ??=
-                                widget.addressModel?.selectedRegion,
+                            _model.dropDownValue1 ??= FFAppState()
+                                .Regions
+                                .where((e) =>
+                                    e.id == widget.addressModel?.selectedRegion)
+                                .toList()
+                                .first
+                                .name,
                           ),
                           options:
                               FFAppState().Regions.map((e) => e.name).toList(),
@@ -386,7 +391,7 @@ class _FillAddressComponentWidgetState
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
-                          hintText: widget.addressModel?.selectedRegion,
+                          hintText: 'Please select...',
                           icon: Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: FlutterFlowTheme.of(context).secondaryText,

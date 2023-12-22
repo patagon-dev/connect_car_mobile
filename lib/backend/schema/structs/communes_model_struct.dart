@@ -33,8 +33,9 @@ class CommunesModelStruct extends FFFirebaseStruct {
         id: data['id'] as String?,
       );
 
-  static CommunesModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CommunesModelStruct.fromMap(data) : null;
+  static CommunesModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? CommunesModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

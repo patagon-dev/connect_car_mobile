@@ -44,8 +44,10 @@ Future<String?> _refresh(context) async {
         .inSeconds;
   }
   FFAppState()
-    ..userSessionToken = RefreshTokenCall.accessToken((response.jsonBody ?? ''))
-    ..refreshToken = RefreshTokenCall.refreshToken((response.jsonBody ?? ''))
+    ..userSessionToken =
+        RefreshTokenCall.accessToken((response.jsonBody ?? '')) ?? ''
+    ..refreshToken =
+        RefreshTokenCall.refreshToken((response.jsonBody ?? '')) ?? ''
     ..minsToRefresh = minsToRefresh ?? 59;
   _refreshTokenDelayed(context);
   return null;

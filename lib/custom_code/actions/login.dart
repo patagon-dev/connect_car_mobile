@@ -16,8 +16,7 @@ import 'package:connect_car/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
-Future<bool> login(
-    BuildContext context, String? email, String? password) async {
+Future<bool> login(BuildContext context, String email, String password) async {
   _toggleLoading();
   var response = await UserLoginCall.call(
     email: FFAppState().signInEmail,
@@ -116,8 +115,10 @@ Future<String?> _refresh() async {
         .inSeconds;
   }
   FFAppState()
-    ..userSessionToken = RefreshTokenCall.accessToken((response.jsonBody ?? ''))
-    ..refreshToken = RefreshTokenCall.refreshToken((response.jsonBody ?? ''))
+    ..userSessionToken =
+        RefreshTokenCall.accessToken((response.jsonBody ?? '')) ?? ''
+    ..refreshToken =
+        RefreshTokenCall.refreshToken((response.jsonBody ?? '')) ?? ''
     ..minsToRefresh = minsToRefresh ?? 59;
   _refreshTokenDelayed();
   return null;

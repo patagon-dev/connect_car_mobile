@@ -66,8 +66,9 @@ class RegionModelStruct extends FFFirebaseStruct {
         ),
       );
 
-  static RegionModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? RegionModelStruct.fromMap(data) : null;
+  static RegionModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? RegionModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,
